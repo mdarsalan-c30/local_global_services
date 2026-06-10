@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Dynamic Title -->
+    <title id="service-page-title">Service Details - Local Global Services</title>
+    <meta name="description" content="Explore enterprise solutions with Local Global Services (LGS). Learn how our specialized consulting accelerates your digital core.">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome 6 icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom stylesheet with Cache Buster -->
+    <link rel="stylesheet" href="css/style.css?v=1.4">
+    <style>
+        .sidebar-links-list li a {
+            cursor: pointer;
+        }
+        .features-bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+        .features-bullet-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+        .features-bullet-list li i {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: var(--accent-red);
+            font-size: 1.1rem;
+        }
+        [dir="rtl"] .features-bullet-list li {
+            padding-left: 0;
+            padding-right: 30px;
+        }
+        [dir="rtl"] .features-bullet-list li i {
+            left: auto;
+            right: 0;
+        }
+        .service-visual-box {
+            background-color: var(--bg-light);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            text-align: center;
+            border: 1px dashed rgba(11, 53, 109, 0.2);
+            margin-top: 30px;
+        }
+        .service-visual-box i {
+            font-size: 6rem;
+            color: var(--primary-blue);
+            opacity: 0.15;
+            transition: var(--transition-smooth);
+        }
+        .service-visual-box:hover i {
+            opacity: 0.8;
+            transform: scale(1.1);
+            color: var(--accent-red);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+       TOP BAR (LGS BRAND ACCENTS)
+       ========================================================================== -->
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Left Side Language Switcher Selector -->
+            <div class="lang-selector-wrapper">
+                <button class="lang-dropdown-btn" id="currentLangBtn" aria-expanded="false">
+                    English (EN)
+                </button>
+                <ul class="lang-dropdown-menu" id="langMenu">
+                    <li><a href="#" data-lang="en">English (EN)</a></li>
+                    <li><a href="#" data-lang="ar">العربية (AR)</a></li>
+                    <li><a href="#" data-lang="de">Deutsch (DE)</a></li>
+                    <li><a href="#" data-lang="es">Español (ES)</a></li>
+                    <li><a href="#" data-lang="fr">Français (FR)</a></li>
+                </ul>
+            </div>
+            
+            <!-- Right Side Contact & Admin Links -->
+            <div class="d-none d-md-flex align-items-center gap-4">
+                <span class="js-contact-phone"><i class="fa-solid fa-phone me-1 text-primary"></i> +91-9718117270</span>
+                <span class="js-contact-email"><i class="fa-regular fa-envelope me-1 text-primary"></i> sales@localglobal.com</span>
+                <a href="blog.html" class="fw-bold text-decoration-none" data-lang-key="nav_news" style="color: var(--text-muted);"><i class="fa-solid fa-square-rss me-1 text-primary"></i> News & Resources</a>
+                <a href="index.html#contact" class="fw-bold text-decoration-none" data-lang-key="nav_contact" style="color: var(--text-muted);"><i class="fa-solid fa-envelope me-1 text-primary"></i> Contact Us</a>
+                <a href="admin/login.php" class="fw-bold" data-lang-key="btn_admin" id="admin-login-link"><i class="fa-solid fa-user-lock me-1"></i> Admin Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       MAIN NAVIGATION SYSTEM (STICKY HEADER WITH COMPLETE LGS MEGA MENU)
+       ========================================================================== -->
+    <nav class="navbar navbar-expand-lg sticky-top main-nav" id="mainNav">
+        <div class="container">
+            <a class="logo-container" href="index.html#home" id="brand-logo-main">
+                <img src="resources/logo.jpeg" alt="Local Global Services Logo" class="brand-logo-img">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home" data-lang-key="nav_home">Home</a>
+                    </li>
+                    
+                    <!-- 1. ABOUT DROPDOWN -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang-key="nav_about">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#about">Company Overview</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 2. PRODUCT & SERVICES MEGA MENU (Excel columns) -->
+                    <li class="nav-item dropdown mega-menu-parent">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Product & Services
+                        </a>
+                        <div class="dropdown-mega-menu">
+                            <div class="container-fluid">
+                                <div class="row g-4">
+                                    <!-- Column 1: SAP Core ERP & Cloud -->
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-title"><i class="fa-solid fa-cube"></i> SAP Core ERP & Cloud</div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=sap-digital-transform" class="subheading-link">Integrated SAP & Digital Transformation</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=sap-digital-transform">Integrated SAP & Digital Transformation</a></li>
+                                                <li><a href="service.html?id=sap-s4hana">SAP S/4HANA & Digital Core</a></li>
+                                                <li><a href="service.html?id=rise-sap">RISE with SAP</a></li>
+                                                <li><a href="service.html?id=grow-sap">GROW with SAP</a></li>
+                                                <li><a href="service.html?id=continuous-ams">Continuous Application Management (AMS)</a></li>
+                                                <li><a href="service.html?id=sap-migration">Migration & Upgrade Services</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=sap-innovation" class="subheading-link">Digital Innovation</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=sap-innovation">Digital Innovation</a></li>
+                                                <li><a href="service.html?id=sap-btp">Business Technology Platform (BTP)</a></li>
+                                                <li><a href="service.html?id=sap-cloud">Cloud Transformation</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=sap-cloud-services" class="subheading-link">SAP Cloud Services</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=sap-cloud-services">SAP Cloud Services</a></li>
+                                                <li><a href="service.html?id=s4-hana-cloud">S4 HANA Cloud</a></li>
+                                                <li><a href="service.html?id=sap-successfactors">SAP SuccessFactors (HXM)</a></li>
+                                                <li><a href="service.html?id=sap-ariba">SAP Ariba Procurement</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Column 2: Analytics & Specialized Modules -->
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-title"><i class="fa-solid fa-layer-group"></i> Analytics & BI</div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=sap-analytics" class="subheading-link">Business Analytics</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=sap-analytics">Business Analytics</a></li>
+                                                <li><a href="service.html?id=sap-analytics-cloud">SAP Analytics Cloud</a></li>
+                                                <li><a href="service.html?id=power-bi">Power BI Analytics</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=fiori-enablement" class="subheading-link">FIORI Enablement</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=fiori-enablement">Fiori Enablement & UX</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=sap-specialized-modules" class="subheading-link">Specialized SAP Module Services</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=sap-specialized-modules">Specialized SAP Module Services</a></li>
+                                                <li><a href="service.html?id=sap-hcm">SAP HCM Implementation</a></li>
+                                                <li><a href="service.html?id=sap-refx">ReFx Real Estate Management</a></li>
+                                                <li><a href="service.html?id=sap-dms">DMS Document Solutions</a></li>
+                                                <li><a href="service.html?id=sap-ehs">Environment Health & Safety (EHS)</a></li>
+                                                <li><a href="service.html?id=sap-opentext">OpenText Integration</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Column 3: Internet of Things (IoT) -->
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-title"><i class="fa-solid fa-wifi"></i> Internet of Things (IoT)</div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=iot-core" class="subheading-link">IoT Production & Logistics</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=iot-core">Internet of Things (IoT) Core</a></li>
+                                                <li><a href="service.html?id=iot-production">IoT Production Uptime Track</a></li>
+                                                <li><a href="service.html?id=iot-vehicle">Vehicle Live Tracking System</a></li>
+                                                <li><a href="service.html?id=iot-fuel">Fuel Consumption Monitors</a></li>
+                                                <li><a href="service.html?id=iot-bus">Bus Tracking System</a></li>
+                                                <li><a href="service.html?id=iot-temp">Temperature Monitoring</a></li>
+                                                <li><a href="service.html?id=iot-equipment">Heavy Equipment Telematics</a></li>
+                                                <li><a href="service.html?id=iot-rfid">RFID Warehouse Solutions</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Column 4: Custom Applications & AI -->
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-title"><i class="fa-solid fa-microchip"></i> App Dev & AI</div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=resource-augmentation" class="subheading-link">Resource Augmentation</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=resource-augmentation">Resource Augmentation</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=cyber-security" class="subheading-link">Enterprise Cyber Security</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=cyber-security">Cyber Security Solutions</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=ai-core" class="subheading-link">Cognitive AI Automation</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=app-dev-core">Application Development Core</a></li>
+                                                <li><a href="service.html?id=app-vendor-portal">Enterprise Vendor Portal</a></li>
+                                                <li><a href="service.html?id=app-weighbridge">Weighbridge ERP Integration</a></li>
+                                                <li><a href="service.html?id=sol-digisign">Digital Signature Integration</a></li>
+                                                <li><a href="service.html?id=app-xlease">X-Lease Management Solution</a></li>
+                                                <li><a href="service.html?id=app-tender">Tender Process Portal</a></li>
+                                                <li><a href="service.html?id=app-hims">Hospital Management - HIMS</a></li>
+                                                <li><a href="service.html?id=ai-core">Artificial Intelligence Core</a></li>
+                                                <li><a href="service.html?id=ai-cheque">Auto Cheque Management</a></li>
+                                                <li><a href="service.html?id=ai-invoice-automation">AP Invoice AI Automation</a></li>
+                                                <li><a href="service.html?id=ai-cloud">AI Cloud Solutions</a></li>
+                                                <li><a href="service.html?id=ai-lowcode">Low Code App Dev</a></li>
+                                                <li><a href="service.html?id=ai-consulting">AI Consulting Services</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- 3. INDUSTRY SOLUTIONS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Industries
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#industries">Automotive Industry</a></li>
+                            <li><a class="dropdown-item" href="index.html#industries">Life Sciences & Pharma Tech</a></li>
+                            <li><a class="dropdown-item" href="index.html#industries">EPC & Construction</a></li>
+                            <li><a class="dropdown-item" href="index.html#industries">Energy & Utility Services</a></li>
+                            <li><a class="dropdown-item" href="index.html#industries">SAP Manufacturing Excellence</a></li>
+                            <li><a class="dropdown-item" href="index.html#industries">Real Estate & Retail</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 4. SAP SOLUTIONS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            SAP Solutions
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="service.html?id=gst-reconciliation">SAP e-Invoice Solution</a></li>
+                            <li><a class="dropdown-item" href="service.html?id=gst-reconciliation">SAP e-Waybill Solution</a></li>
+                            <li><a class="dropdown-item" href="service.html?id=gst-reconciliation">GST Reconciliation</a></li>
+                            <li><a class="dropdown-item" href="service.html?id=app-vendor-portal">SAP Gate Entry Exit Solution</a></li>
+                            <li><a class="dropdown-item" href="service.html?id=app-vendor-portal">Digital Signature Integration</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <a href="#inquiry-form-section" class="btn btn-accent-brand" data-lang-key="btn_get_started" id="cta-get-in-touch">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+       DYNAMIC HERO BANNER
+       ========================================================================== -->
+    <header class="service-hero" id="service-banner-bg" style="background: linear-gradient(135deg, #0B356D 0%, #021a3a 100%);">
+        <div class="container">
+            <!-- Breadcrumbs -->
+            <nav aria-label="breadcrumb" class="d-inline-flex mb-4" id="service-breadcrumbs" style="background: rgba(255, 255, 255, 0.08); padding: 6px 16px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.15);">
+                <ol class="breadcrumb mb-0" style="background: transparent; padding: 0; display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 500; font-family: 'Montserrat', sans-serif; list-style: none;">
+                    <li class="breadcrumb-item" style="display: flex; align-items: center;"><a href="index.html" class="text-white-50 text-decoration-none hover-white" style="transition: color 0.3s;"><i class="fa-solid fa-house me-1" style="font-size: 0.75rem;"></i> Home</a></li>
+                    <li class="breadcrumb-separator text-white-50" style="font-size: 0.7rem;"><i class="fa-solid fa-chevron-right"></i></li>
+                    <li class="breadcrumb-item" style="display: flex; align-items: center;" id="breadcrumb-parent-item"><a href="index.html#pillars" class="text-white-50 text-decoration-none hover-white" style="transition: color 0.3s;" id="breadcrumb-parent-link">Product & Services</a></li>
+                    <li class="breadcrumb-separator text-white-50" style="font-size: 0.7rem;"><i class="fa-solid fa-chevron-right"></i></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page" style="display: flex; align-items: center; font-weight: 600;" id="breadcrumb-active-item">SAP S/4HANA Integration</li>
+                </ol>
+            </nav>
+            <br>
+            <span class="service-hero-tag" id="service-hero-tagline">Local Global Services</span>
+            <h1 class="service-hero-title mb-3" id="service-title">SAP S/4HANA Integration</h1>
+            <p class="service-hero-desc lead mb-0" id="service-tagline">Accelerate your core operations with the power of next-generation enterprise ERP.</p>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+       MAIN SERVICE SPLIT CONTENT SECTION
+       ========================================================================== -->
+    <main class="py-5 my-4">
+        <div class="container">
+            <div class="row g-5">
+                
+                <!-- Left Column: Dynamic Content -->
+                <div class="col-lg-8" id="service-content-column">
+                    <h2 class="font-weight-bold mb-4 text-primary" id="content-heading">Capabilities Overview</h2>
+                    
+                    <!-- Vector visual card representation -->
+                    <div class="service-visual-box" id="visual-icon-box">
+                        <i class="fa-solid fa-server" id="service-icon-glyph"></i>
+                    </div>
+
+                    <p class="lead mb-4" id="service-desc-1">
+                        We help global companies modernize their enterprise cores by delivering secure, custom SAP integrations, real-time tracking middlewares, and cognitive AI software architectures.
+                    </p>
+                    
+                    <p class="mb-5 text-muted" id="service-desc-2">
+                        Leveraging LGS custom technology strategies, our 500+ certified specialists manage the complete deployment lifecycle, ensuring robust compliance controls, zero downtime conversions, and maximum ROI.
+                    </p>
+                    
+                    <!-- Dynamic Features List -->
+                    <h4 class="font-weight-bold mb-4" style="color: var(--text-dark);"><i class="fa-regular fa-circle-check me-2 text-danger"></i> Key Functional Highlights</h4>
+                    <ul class="features-bullet-list" id="features-list">
+                        <li><i class="fa-solid fa-check"></i> Standard dynamic capability setup.</li>
+                    </ul>
+                </div>
+                
+                <!-- Right Column: Sidebar Navigation & Inquiry Box -->
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column gap-4">
+                        
+                        <!-- Related Services Navigation -->
+                        <div class="service-sidebar">
+                            <h5 class="sidebar-title">Product & Services</h5>
+                            <ul class="sidebar-links-list" id="sidebar-links">
+                                <li><a data-id="sap-s4hana" class="active">SAP S/4HANA ERP <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="rise-sap">RISE with SAP <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="grow-sap">GROW with SAP <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="sap-successfactors">SuccessFactors HXM <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="sap-ariba">SAP Ariba Sourcing <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="continuous-ams">Managed SAP AMS <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="analytics-powerbi">Business Power BI <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="iot-production">IoT Production Track <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="iot-vehicle">Vehicle Live Tracking <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="app-vendor-portal">Enterprise Vendor Portal <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="ai-invoice-automation">AP Invoice AI Automation <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="gst-reconciliation">GST & e-Invoicing <i class="fa-solid fa-chevron-right small"></i></a></li>
+                                <li><a data-id="cyber-security">Enterprise Cyber Security <i class="fa-solid fa-chevron-right small"></i></a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Inquiry Card -->
+                        <div class="service-sidebar" style="background-color: var(--primary-blue); color: white;" id="inquiry-form-section">
+                            <h5 class="sidebar-title" style="color: white; border-color: rgba(255,255,255,0.1);">Quick Inquiry</h5>
+                            <p class="small text-white-50 mb-4">Request a dynamic operational consultation with our experts.</p>
+                            
+                            <div id="serviceFormNotice" class="alert alert-success d-none mb-3" style="font-size: 0.85rem;"></div>
+                            
+                            <form id="serviceContactForm" method="POST" action="api/contact.php">
+                                <input type="hidden" name="service" id="form-service-name" value="SAP S/4HANA & Digital Core">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control form-control-sm" name="name" required placeholder="Your Name" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm);">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control form-control-sm" name="email" required placeholder="Your Email" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm);">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control form-control-sm" name="phone" required placeholder="Your Phone Number" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm);">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control form-control-sm" name="message" rows="3" required placeholder="Your Inquiry Details" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm);"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-accent-brand btn-sm w-100 py-2">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+
+    <!-- ==========================================================================
+       FOOTER SECTION (PROFESSIONAL Navy/Red)
+       ========================================================================== -->
+    <footer class="py-5 text-white bg-dark">
+        <div class="container py-4">
+            <div class="row g-4 mb-4">
+                <!-- Company Info -->
+                <div class="col-lg-6">
+                    <div class="footer-brand brand-font mb-3">
+                        Local<span>Global</span>
+                    </div>
+                    <p class="text-white-50 mb-4" style="font-size: 0.9rem; line-height: 1.6;">
+                        Local Global Services (LGS) is a leading global SAP Gold Partner and digital systems integrator. We accelerate enterprise modernization across applications, data, cloud, IoT, and AI.
+                    </p>
+                    <div class="social-links d-flex gap-2">
+                        <a href="https://www.linkedin.com/company/localglobal-services-pvt-ltd/?viewAsMember=true" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/local_global_services_sap?igsh=MTh6ODQyMGh3NTYwaQ%3D%3D&utm_source=qr" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="mt-4">
+                        <h6 class="text-white-50 small text-uppercase mb-2" style="letter-spacing: 1.05px; font-weight: 700; font-size: 0.72rem;">Certifications & Accreditations</h6>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="resources/uploads/ISO 9001.png" alt="ISO 9001" style="height: 60px; width: auto; background: rgba(255, 255, 255, 0.08); padding: 6px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <img src="resources/uploads/ISO 27001.png" alt="ISO 27001" style="height: 60px; width: auto; background: rgba(255, 255, 255, 0.08); padding: 6px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <img src="resources/uploads/CMMI L3.png" alt="CMMI Level 3" style="height: 60px; width: auto; background: rgba(255, 255, 255, 0.08); padding: 6px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="col-lg-6">
+                    <h5 class="footer-title mb-3">Contact Info</h5>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled text-white-50 d-flex flex-column gap-2 small mb-0">
+                                <li>
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i><strong>Office (India):</strong><br>
+                                    Building No.18, Panchsheel Park, Commercial complex, New Delhi, India
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i><strong>Office (Bahrain):</strong><br>
+                                    Seef District, Manama, Bahrain
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled text-white-50 d-flex flex-column gap-2 small">
+                                <li>
+                                    <span class="js-contact-phone"><i class="fa-solid fa-phone text-danger me-2"></i> +91-9718117270</span>
+                                </li>
+                                <li>
+                                    <span class="js-contact-email"><i class="fa-regular fa-envelope text-danger me-2"></i> sales@localglobal.com</span>
+                                </li>
+                            </ul>
+                            <div class="mt-3">
+                                <a href="admin/login.php" class="btn btn-outline-light btn-sm px-3 py-2" style="border-radius: 8px;">
+                                    <i class="fa-solid fa-user-lock me-1"></i> Admin Portal
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary opacity-25">
+            
+            <!-- Sitemap Section -->
+            <div class="row g-4 mt-2">
+                <!-- Column 1 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">SAP ERP & Cloud</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sap-digital-transform" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Integrated SAP & Digital Transformation Services</a></li>
+                        <li><a href="service.html?id=sap-s4hana" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP S/4HANA</a></li>
+                        <li><a href="service.html?id=rise-sap" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">RISE with SAP</a></li>
+                        <li><a href="service.html?id=grow-sap" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">GROW with SAP</a></li>
+                        <li><a href="service.html?id=continuous-ams" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Continuous Application Management</a></li>
+                        <li><a href="service.html?id=sap-migration" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Migration & Upgrade</a></li>
+                    </ul>
+                    
+                    <div class="footer-category-title mt-3 mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Industry-Driven SAP Solutions</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=ind-automotive" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Automotive</a></li>
+                        <li><a href="service.html?id=ind-lifesciences" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Life Sciences & Pharma Tech</a></li>
+                        <li><a href="service.html?id=ind-epc" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Engineer. Procure. Construct. Digitally.</a></li>
+                        <li><a href="service.html?id=ind-energy" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Energy & Utility Services</a></li>
+                        <li><a href="service.html?id=ind-manufacturing" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP for Manufacturing Excellence</a></li>
+                        <li><a href="service.html?id=ind-realestate" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Real Estate</a></li>
+                        <li><a href="service.html?id=ind-retail" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Retail Transformation Services</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Innovation & Analytics</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sap-innovation" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Digital Innovation</a></li>
+                        <li><a href="service.html?id=sap-cloud" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Cloud Transformation</a></li>
+                        <li><a href="service.html?id=sap-btp" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Business Technology Platform</a></li>
+                        <li><a href="service.html?id=sap-cloud-services" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Cloud Services</a></li>
+                        <li><a href="service.html?id=s4-hana-cloud" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP S/4HANA Cloud</a></li>
+                        <li><a href="service.html?id=sap-successfactors" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP SuccessFactors</a></li>
+                        <li><a href="service.html?id=sap-ariba" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Ariba</a></li>
+                    </ul>
+
+                    <div class="footer-category-title mt-3 mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Business Analytics</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sap-analytics" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Analytics</a></li>
+                        <li><a href="service.html?id=power-bi" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Power BI</a></li>
+                        <li><a href="service.html?id=fiori-enablement" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Fiori Enablement</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Specialized Modules & IoT</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li class="fw-bold text-white-50 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.85) !important;">Specialized SAP Module Services</li>
+                        <li><a href="service.html?id=sap-hcm" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">SAP HCM Implementation</a></li>
+                        <li><a href="service.html?id=sap-refx" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">ReFx Implementation</a></li>
+                        <li><a href="service.html?id=sap-dms" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">SAP Document Management System</a></li>
+                        <li><a href="service.html?id=sap-ehs" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">SAP Environment, Health & Safety Management</a></li>
+                        <li><a href="service.html?id=sap-opentext" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">OpenText</a></li>
+                        
+                        <li class="fw-bold text-white-50 mt-3" style="font-size: 0.78rem; color: rgba(255,255,255,0.85) !important;">Internet Of Things (IOT)</li>
+                        <li><a href="service.html?id=iot-production" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Production Track</a></li>
+                        <li><a href="service.html?id=iot-vehicle" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Vehicle Live Tracking System</a></li>
+                        <li><a href="service.html?id=iot-fuel" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Fuel Consuption Monitoring System</a></li>
+                        <li><a href="service.html?id=iot-bus" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Bus Tracking System</a></li>
+                        <li><a href="service.html?id=iot-temp" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Temperature Monitoring</a></li>
+                        <li><a href="service.html?id=iot-equipment" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Heavy Equipment Tracking</a></li>
+                        <li><a href="service.html?id=iot-rfid" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">RFID Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Custom Apps & AI</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=resource-augmentation" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Resource Augmentation</a></li>
+                        <li><a href="service.html?id=app-dev-core" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development</a></li>
+                        <li><a href="service.html?id=app-vendor-portal" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development: Vendor Portal</a></li>
+                        <li><a href="service.html?id=app-weighbridge" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development: Weighbridge Integration</a></li>
+                        <li><a href="service.html?id=sol-digisign" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development: Digital Signature Integration</a></li>
+                        <li><a href="service.html?id=app-xlease" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">X-Lease Management Solution</a></li>
+                        <li><a href="service.html?id=app-tender" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Tender Process</a></li>
+                        <li><a href="service.html?id=app-hims" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Hospital Management</a></li>
+                        <li><a href="service.html?id=ai-core" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Artificial Intelligence</a></li>
+                        <li><a href="service.html?id=ai-cheque" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Auto Cheque Management</a></li>
+                        <li><a href="service.html?id=ai-invoice-automation" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Vendor/AP Invoice Automation</a></li>
+                        <li><a href="service.html?id=ai-cloud" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Cloud</a></li>
+                        <li><a href="service.html?id=ai-lowcode" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Low Code Development</a></li>
+                        <li><a href="service.html?id=ai-consulting" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Consulting</a></li>
+                        <li><a href="service.html?id=cyber-security" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Cyber Security</a></li>
+                    </ul>
+                    
+                    <div class="footer-category-title mt-3 mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">SAP Solutions</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sol-einvoice" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP e-Invoice Solution</a></li>
+                        <li><a href="service.html?id=sol-ewaybill" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP e-Waybill Solution</a></li>
+                        <li><a href="service.html?id=sol-gst" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">GST Reconciliation</a></li>
+                        <li><a href="service.html?id=sol-gateentry" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Gate Entry Exit Solution</a></li>
+                        <li><a href="service.html?id=sol-barcode" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Barcode Integration</a></li>
+                        <li><a href="service.html?id=sol-whatsapp" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP WhatsApp Integration</a></li>
+                        <li><a href="service.html?id=sol-payment" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Payment Gateway Integration</a></li>
+                        <li><a href="service.html?id=sol-p2p" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">P2P Procurement Automation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary opacity-25">
+            
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <span class="text-white-50 small">&copy; 2026 Local Global Services. All rights reserved.</span>
+                <div class="d-flex gap-3 small">
+                    <a href="legal.html?id=privacy-policy" class="text-white-50 text-decoration-none">Privacy Policy</a>
+                    <span class="text-white-50">|</span>
+                    <a href="legal.html?id=terms-conditions" class="text-white-50 text-decoration-none">Terms & Conditions</a>
+                </div>
+                <span class="text-white-50 small">SAP&reg;, S/4HANA&reg;, SuccessFactors&reg; are trademarks of SAP SE.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom scripts -->
+    <script src="js/languages.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Language System Hook-up
+            let currentLang = localStorage.getItem('site_language') || 'en';
+            applyLanguage(currentLang);
+            
+            document.querySelectorAll('.lang-dropdown-menu li a').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    applyLanguage(item.getAttribute('data-lang'));
+                });
+            });
+            
+            function applyLanguage(lang) {
+                if (!translations[lang]) return;
+                currentLang = lang;
+                localStorage.setItem('site_language', lang);
+                document.documentElement.setAttribute('dir', translations[lang].dir);
+                document.documentElement.setAttribute('lang', lang);
+                
+                const langNames = {
+                    en: 'English (EN)', ar: 'العربية (AR)', de: 'Deutsch (DE)', es: 'Español (ES)', fr: 'Français (FR)'
+                };
+                const langBtn = document.getElementById('currentLangBtn');
+                if (langBtn) langBtn.textContent = langNames[lang];
+            }
+
+            // 2. Dynamic content loader logic
+            let localMenuTree = null;
+            const urlParams = new URLSearchParams(window.location.search);
+            let serviceId = urlParams.get('id') || 'sap-s4hana';
+            
+            // Render service content & Sidebar
+            loadServiceAndSidebar(serviceId);
+            
+            async function loadServiceAndSidebar(id) {
+                // Fetch service content from API
+                try {
+                    const response = await fetch(`api/get_service.php?key=${id}`);
+                    const result = await response.json();
+                    if (result.success && result.data) {
+                        renderServiceContent(result.data);
+                    } else {
+                        // Fallback to S4HANA default if not found
+                        if (id !== 'sap-s4hana') {
+                            loadServiceAndSidebar('sap-s4hana');
+                        }
+                    }
+                } catch (err) {
+                    console.error("Error fetching service content:", err);
+                }
+                
+                // Fetch dynamic sidebar from API
+                try {
+                    const response = await fetch('api/get_menu.php');
+                    const result = await response.json();
+                    if (result.success && result.data) {
+                        localMenuTree = result.data;
+                        renderSidebar(result.data, id);
+                    }
+                } catch (err) {
+                    console.error("Error fetching sidebar menu:", err);
+                }
+            }
+            
+            // Group mappings for dynamic context-aware categorization
+            const categoryGroups = [
+                {
+                    name: 'Integrated SAP & Digital Transformation',
+                    keys: ['sap-s4hana', 'rise-sap', 'grow-sap', 'continuous-ams', 'sap-digital-transform', 'sap-migration']
+                },
+                {
+                    name: 'Digital Innovation',
+                    keys: ['sap-innovation', 'sap-btp', 'sap-cloud']
+                },
+                {
+                    name: 'SAP Cloud Services',
+                    keys: ['sap-cloud-services', 's4-hana-cloud', 'sap-successfactors', 'sap-ariba']
+                },
+                {
+                    name: 'Business Analytics',
+                    keys: ['sap-analytics', 'sap-analytics-cloud', 'power-bi', 'analytics-powerbi']
+                },
+                {
+                    name: 'FIORI Enablement',
+                    keys: ['fiori-enablement']
+                },
+                {
+                    name: 'Specialized SAP Module Services',
+                    keys: ['sap-specialized-modules', 'sap-hcm', 'sap-refx', 'sap-dms', 'sap-ehs', 'sap-opentext']
+                },
+                {
+                    name: 'IoT Production & Logistics',
+                    keys: ['iot-core', 'iot-production', 'iot-vehicle', 'iot-fuel', 'iot-bus', 'iot-temp', 'iot-equipment', 'iot-rfid']
+                },
+                {
+                    name: 'Resource Augmentation',
+                    keys: ['resource-augmentation']
+                },
+                {
+                    name: 'Enterprise Cyber Security',
+                    keys: ['cyber-security']
+                },
+                {
+                    name: 'Cognitive AI Automation',
+                    keys: [
+                        'app-dev-core', 'app-vendor-portal', 'app-weighbridge', 
+                        'sol-digisign', 'app-xlease', 'app-tender', 
+                        'app-hims', 'ai-core', 'ai-cheque', 
+                        'ai-invoice-automation', 'ai-cloud', 'ai-lowcode', 
+                        'ai-consulting'
+                    ]
+                }
+            ];
+
+            function renderSidebar(menuTree, activeId) {
+                const sidebarLinks = document.getElementById('sidebar-links');
+                const sidebarTitle = document.querySelector('.sidebar-title');
+                if (!sidebarLinks) return;
+                sidebarLinks.innerHTML = '';
+                
+                // 1. Find the parent menu in the database menuTree that contains the activeId
+                let parentMenu = null;
+                if (menuTree && Array.isArray(menuTree)) {
+                    for (const m of menuTree) {
+                        if (m.submenus && Array.isArray(m.submenus)) {
+                            const found = m.submenus.find(sub => sub.service_key.toLowerCase() === activeId.toLowerCase());
+                            if (found) {
+                                parentMenu = m;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Update parent breadcrumb link dynamically
+                const parentUrls = {
+                    1: 'index.html#about',
+                    2: 'index.html#pillars',
+                    3: 'index.html#industries',
+                    4: 'index.html#contact'
+                };
+                
+                let resolvedParentName = 'Product & Services';
+                let resolvedParentUrl = 'index.html#pillars';
+                
+                if (parentMenu) {
+                    resolvedParentName = parentMenu.name;
+                    resolvedParentUrl = parentUrls[parentMenu.id] || 'index.html#pillars';
+                } else {
+                    // Fallback matching
+                    if (activeId.startsWith('ind-')) {
+                        resolvedParentName = 'Industries';
+                        resolvedParentUrl = 'index.html#industries';
+                    } else if (activeId.startsWith('sol-') || activeId.startsWith('gst-')) {
+                        resolvedParentName = 'SAP Solutions';
+                        resolvedParentUrl = 'index.html#contact';
+                    }
+                }
+                
+                const parentLink = document.getElementById('breadcrumb-parent-link');
+                if (parentLink) {
+                    parentLink.textContent = resolvedParentName;
+                    parentLink.setAttribute('href', resolvedParentUrl);
+                }
+                
+                // 2. Handle submenus filtering depending on whether it is Product & Services (ID 2) or another parent menu
+                let sidebarTitleText = 'Related Services';
+                let filteredSubmenus = [];
+                
+                if (parentMenu) {
+                    // If it is Product & Services, use the fine-grained categoryGroups logic
+                    if (parentMenu.id === 2 || parentMenu.name.toLowerCase().includes('product') || parentMenu.name.toLowerCase().includes('service')) {
+                        let matchedGroup = categoryGroups.find(grp => {
+                            return grp.keys.some(k => activeId.toLowerCase().includes(k.toLowerCase()) || k.toLowerCase().includes(activeId.toLowerCase()));
+                        });
+                        
+                        if (matchedGroup) {
+                            sidebarTitleText = matchedGroup.name;
+                            filteredSubmenus = parentMenu.submenus.filter(sub => {
+                                const key = sub.service_key.toLowerCase();
+                                return matchedGroup.keys.some(k => key.includes(k.toLowerCase()) || k.toLowerCase().includes(key));
+                            });
+                        } else {
+                            sidebarTitleText = parentMenu.name;
+                            filteredSubmenus = parentMenu.submenus;
+                        }
+                    } else {
+                        // For any other parent menu (like Industries or SAP Solutions), show all its submenus
+                        sidebarTitleText = parentMenu.name;
+                        filteredSubmenus = parentMenu.submenus;
+                    }
+                } else {
+                    // Fallback if parentMenu is not resolved (e.g. local offline fallback details page)
+                    sidebarTitleText = 'Related Services';
+                    if (activeId.startsWith('ind-')) {
+                        const indMenu = menuTree.find(m => m.id === 3 || m.name.toLowerCase().includes('industry'));
+                        if (indMenu && indMenu.submenus) {
+                            sidebarTitleText = indMenu.name;
+                            filteredSubmenus = indMenu.submenus;
+                        }
+                    } else if (activeId.startsWith('sol-') || activeId.startsWith('gst-')) {
+                        const sapMenu = menuTree.find(m => m.id === 4 || m.name.toLowerCase().includes('sap'));
+                        if (sapMenu && sapMenu.submenus) {
+                            sidebarTitleText = sapMenu.name;
+                            filteredSubmenus = sapMenu.submenus;
+                        }
+                    }
+                }
+                
+                // Update sidebar header to category title dynamically
+                if (sidebarTitle) {
+                    sidebarTitle.innerHTML = `<i class="fa-solid fa-layer-group me-2 text-danger"></i> ${sidebarTitleText}`;
+                }
+                
+                // 3. Render the list of links
+                if (filteredSubmenus && filteredSubmenus.length > 0) {
+                    filteredSubmenus.forEach(sub => {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.setAttribute('data-id', sub.service_key);
+                        if (sub.service_key === activeId) {
+                            a.className = 'active';
+                        }
+                        a.innerHTML = `${sub.name} <i class="fa-solid fa-chevron-right small"></i>`;
+                        
+                        // Handle smooth transitions on click
+                        a.addEventListener('click', () => {
+                            const key = sub.service_key;
+                            
+                            // Update URL silently without full reload
+                            history.pushState(null, '', `service.html?id=${key}`);
+                            
+                            // Smooth transition animation
+                            const mainContent = document.getElementById('service-content-column');
+                            mainContent.style.opacity = 0;
+                            mainContent.style.transform = 'translateY(15px)';
+                            mainContent.style.transition = 'all 0.3s ease';
+                            
+                            setTimeout(async () => {
+                                try {
+                                    const res = await fetch(`api/get_service.php?key=${key}`);
+                                    const dataResult = await res.json();
+                                    if (dataResult.success && dataResult.data) {
+                                        renderServiceContent(dataResult.data);
+                                        // Re-render sidebar dynamically to highlight current active key and maintain group scope
+                                        renderSidebar(menuTree, key);
+                                    }
+                                } catch (e) {
+                                    console.error("Failed to load clicked service:", e);
+                                }
+                                mainContent.style.opacity = 1;
+                                mainContent.style.transform = 'translateY(0)';
+                            }, 300);
+                        });
+                        
+                        li.appendChild(a);
+                        sidebarLinks.appendChild(li);
+                    });
+                }
+            }
+            
+            function renderServiceContent(data) {
+                const id = data.service_key;
+                serviceId = id;
+                
+                // Document title
+                document.title = `${data.name} - Local Global Services`;
+                document.getElementById('service-page-title').textContent = `${data.name} - Local Global Services`;
+                
+                // Hero elements
+                document.getElementById('service-title').textContent = data.name;
+                document.getElementById('service-tagline').textContent = data.tagline;
+                document.getElementById('service-banner-bg').style.background = data.banner_grad;
+                
+                // Update active item breadcrumb dynamically
+                const activeItem = document.getElementById('breadcrumb-active-item');
+                if (activeItem) {
+                    activeItem.textContent = data.name;
+                }
+                
+                // Content overview
+                document.getElementById('content-heading').textContent = data.name;
+                document.getElementById('service-desc-1').textContent = data.desc1;
+                document.getElementById('service-desc-2').textContent = data.desc2;
+                
+                // Render key highlights list
+                const list = document.getElementById('features-list');
+                list.innerHTML = '';
+                if (data.features && Array.isArray(data.features)) {
+                    data.features.forEach(feat => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${feat}`;
+                        list.appendChild(li);
+                    });
+                }
+                
+                // Render icons or uploaded image
+                const visualBox = document.getElementById('visual-icon-box');
+                if (visualBox) {
+                    if (data.image_url && data.image_url.trim() !== '') {
+                        visualBox.style.padding = '0';
+                        visualBox.style.background = 'none';
+                        visualBox.style.border = 'none';
+                        visualBox.style.boxShadow = 'none';
+                        visualBox.style.marginTop = '0';
+                        visualBox.style.marginBottom = '30px';
+                        visualBox.innerHTML = `<img src="${data.image_url}" alt="${data.name}" class="img-fluid rounded shadow" style="width: 100%; max-height: 450px; object-fit: cover;">`;
+                    } else {
+                        visualBox.style.padding = '40px';
+                        visualBox.style.background = 'var(--bg-light)';
+                        visualBox.style.border = '1px dashed rgba(11, 53, 109, 0.2)';
+                        visualBox.style.boxShadow = '';
+                        visualBox.style.marginTop = '30px';
+                        visualBox.style.marginBottom = '30px';
+                        visualBox.innerHTML = `<i class="fa-solid ${data.icon || 'fa-server'}" id="service-icon-glyph"></i>`;
+                    }
+                }
+                
+                // Update hidden inquiry field value
+                const formServiceName = document.getElementById('form-service-name');
+                if (formServiceName) {
+                    formServiceName.value = data.name;
+                }
+                
+                // Update sidebar active selection
+                document.querySelectorAll('.sidebar-links-list li a').forEach(a => {
+                    if (a.getAttribute('data-id') === id) {
+                        a.classList.add('active');
+                    } else {
+                        a.classList.remove('active');
+                    }
+                });
+
+                // Check if this loaded page is a Category Overview Page (first key in any category group)
+                let matchedCategoryGroup = categoryGroups.find(grp => grp.keys[0] === id);
+                
+                // Remove existing category showcase container if any
+                const existingShowcase = document.getElementById('category-showcase-container');
+                if (existingShowcase) {
+                    existingShowcase.remove();
+                }
+                
+                if (matchedCategoryGroup) {
+                    // Create showcase container
+                    const showcaseDiv = document.createElement('div');
+                    showcaseDiv.id = 'category-showcase-container';
+                    showcaseDiv.className = 'mt-5 pt-3';
+                    
+                    // Add section header
+                    showcaseDiv.innerHTML = `
+                        <h3 class="font-weight-bold mb-4 text-primary" style="font-family: 'Outfit', sans-serif;">
+                            <i class="fa-solid fa-layer-group text-danger me-2"></i> Showcase of ${matchedCategoryGroup.name}
+                        </h3>
+                        <p class="text-muted mb-4 lead" style="font-size: 1.05rem;">
+                            Discover the suite of specialized technologies, applications, and frameworks included under this segment. Click on any block to explore detailed specifications.
+                        </p>
+                        <div id="category-subservices-list" class="d-flex flex-column gap-4">
+                            <div class="text-center py-4">
+                                <i class="fa-solid fa-spinner fa-spin text-primary fa-2xl"></i>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.getElementById('service-content-column').appendChild(showcaseDiv);
+                    
+                    // Fetch sub-services details dynamically in a single optimized batch query request!
+                    const subKeys = matchedCategoryGroup.keys.slice(1);
+                    const listContainer = document.getElementById('category-subservices-list');
+                    
+                    fetch(`api/get_service.php?keys=${subKeys.join(',')}`)
+                        .then(res => res.json())
+                        .then(result => {
+                            // Clear spinner
+                            listContainer.innerHTML = '';
+                            
+                            if (!result.success || !result.data || result.data.length === 0) {
+                                listContainer.innerHTML = `<div class="alert alert-info">No sub-services listed inside this category at the moment.</div>`;
+                                return;
+                            }
+                            
+                            const validServices = result.data;
+                        
+                        validServices.forEach(sub => {
+                            const block = document.createElement('div');
+                            block.className = 'premium-card p-4 my-3';
+                            block.style.borderLeft = '4px solid var(--accent-red)';
+                            block.style.cursor = 'pointer';
+                            block.style.transition = 'var(--transition-smooth)';
+                            
+                            // Make the whole card click-navigable
+                            block.addEventListener('click', () => {
+                                const sidebarLink = document.querySelector(`.sidebar-links-list li a[data-id="${sub.service_key}"]`);
+                                if (sidebarLink) {
+                                    sidebarLink.click();
+                                } else {
+                                    // Fallback manual transition
+                                    history.pushState(null, '', `service.html?id=${sub.service_key}`);
+                                    renderServiceContent(sub);
+                                    if (localMenuTree) {
+                                        renderSidebar(localMenuTree, sub.service_key);
+                                    }
+                                }
+                            });
+                            
+                            let featuresHtml = '';
+                            if (sub.features && Array.isArray(sub.features)) {
+                                featuresHtml = `<ul class="features-bullet-list mt-3 mb-0 row g-2">`;
+                                sub.features.slice(0, 3).forEach(f => {
+                                    featuresHtml += `<li class="col-md-6 mb-1 text-muted" style="font-size: 0.9rem; list-style: none; padding-left: 20px; position: relative;">
+                                        <i class="fa-solid fa-check text-danger" style="position: absolute; left: 0; top: 4px;"></i> ${f}
+                                    </li>`;
+                                });
+                                featuresHtml += `</ul>`;
+                            }
+                            
+                            let iconOrImageHtml = `<i class="fa-solid ${sub.icon || 'fa-cubes'} text-danger me-2"></i>`;
+
+                            block.innerHTML = `
+                                <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
+                                    <div style="flex-grow: 1;">
+                                        <h4 class="h5 font-weight-bold text-primary mb-2" style="font-family: 'Outfit', sans-serif;">
+                                            ${iconOrImageHtml} ${sub.name}
+                                        </h4>
+                                        <p class="text-muted mb-2 small"><strong>${sub.tagline}</strong></p>
+                                        <p class="text-muted small mb-0">${sub.desc1.substring(0, 160)}...</p>
+                                        ${featuresHtml}
+                                    </div>
+                                    <button class="btn btn-outline-danger btn-sm text-nowrap align-self-end align-self-md-center mt-3 mt-md-0" style="border-radius: 8px;">
+                                        Explore Details <i class="fa-solid fa-arrow-right ms-1"></i>
+                                    </button>
+                                </div>
+                            `;
+                            
+                            listContainer.appendChild(block);
+                        });
+                    });
+                }
+                
+                // Scroll to top of content segment
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // 3. Dynamic service AJAX submit
+            const serviceForm = document.getElementById('serviceContactForm');
+            const formNotice = document.getElementById('serviceFormNotice');
+            
+            if (serviceForm) {
+                serviceForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    formNotice.className = 'alert alert-info d-block';
+                    formNotice.textContent = 'Submitting your inquiry...';
+                    
+                    try {
+                        const response = await fetch('api/contact.php', {
+                            method: 'POST',
+                            body: new FormData(serviceForm)
+                        });
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            formNotice.className = 'alert alert-success d-block';
+                            formNotice.textContent = 'Thank you! Your inquiry was submitted successfully.';
+                            serviceForm.reset();
+                        } else {
+                            formNotice.className = 'alert alert-danger d-block';
+                            formNotice.textContent = 'Inquiry submission failed. Please try again.';
+                        }
+                    } catch (err) {
+                        formNotice.className = 'alert alert-danger d-block';
+                        formNotice.textContent = 'Network error. Please check connection and try again.';
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- ElevenLabs Conversational AI Voice Agent Widget Embed -->
+    <elevenlabs-convai agent-id="agent_8701ksjdjkgrf8b81gnkdvnv04mj"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+</html>

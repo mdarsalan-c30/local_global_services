@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Default SEO Meta Tags (Will be updated dynamically for single post view) -->
+    <title>News & Resources | Local Global Services (LGS)</title>
+    <meta name="description" content="Stay updated with the latest enterprise insights, SAP S/4HANA migration guides, Industrial IoT solutions, and artificial intelligence innovations from LGS.">
+    <meta name="keywords" content="SAP Gold Partner, LGS, S/4HANA, RISE with SAP, IoT, AP Automation, AI Business Solutions">
+    <meta name="author" content="Local Global Services">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="css/style.css?v=1.4">
+    
+    <style>
+        .blog-header-banner {
+            background: linear-gradient(135deg, #0B356D 0%, #031D44 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .blog-header-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: radial-gradient(circle, rgba(227,27,35,0.1) 0%, transparent 80%);
+            pointer-events: none;
+        }
+        .blog-card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            background: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(11, 53, 109, 0.15);
+        }
+        .blog-card-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+        .blog-card:hover .blog-card-img {
+            transform: scale(1.05);
+        }
+        .blog-card-body {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-date {
+            font-size: 0.8rem;
+            color: var(--accent-red);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .blog-card-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: #0B356D;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-card-summary {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-read-more {
+            margin-top: auto;
+            color: #0B356D;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            transition: gap 0.2s ease;
+        }
+        .blog-card:hover .blog-read-more {
+            color: var(--accent-red);
+            gap: 10px;
+        }
+        
+        /* Article Reading Styles */
+        .article-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            padding: 48px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        .article-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: #0B356D;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .article-meta-item {
+            font-size: 0.88rem;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333333;
+        }
+        .article-content p {
+            margin-bottom: 24px;
+        }
+        .article-content h3, .article-content h4 {
+            font-family: 'Outfit', sans-serif;
+            color: #0B356D;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 24px;
+            padding-left: 24px;
+        }
+        .article-content li {
+            margin-bottom: 8px;
+        }
+        .back-btn-wrapper {
+            margin-bottom: 24px;
+        }
+        .btn-back-to-blogs {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        .btn-back-to-blogs:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+        }
+        
+        /* Search Box styling */
+        .search-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+       TOP BAR (LGS BRAND ACCENTS)
+       ========================================================================== -->
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Left Side Language Selector -->
+            <div class="lang-selector-wrapper">
+                <button class="lang-dropdown-btn" id="currentLangBtn" aria-expanded="false">
+                    English (EN)
+                </button>
+                <ul class="lang-dropdown-menu" id="langMenu">
+                    <li><a href="#" data-lang="en">English (EN)</a></li>
+                    <li><a href="#" data-lang="ar">العربية (AR)</a></li>
+                    <li><a href="#" data-lang="de">Deutsch (DE)</a></li>
+                    <li><a href="#" data-lang="es">Español (ES)</a></li>
+                    <li><a href="#" data-lang="fr">Français (FR)</a></li>
+                </ul>
+            </div>
+            
+            <!-- Right Side Contact Details -->
+            <div class="d-none d-md-flex align-items-center gap-4">
+                <span class="js-contact-phone"><i class="fa-solid fa-phone me-1 text-primary"></i> +91-9718117270</span>
+                <span class="js-contact-email"><i class="fa-regular fa-envelope me-1 text-primary"></i> sales@localglobal.com</span>
+                <a href="blog.html" class="fw-bold text-decoration-none active" style="color: var(--primary-navy);"><i class="fa-solid fa-square-rss me-1 text-primary"></i> News & Resources</a>
+                <a href="index.html#contact" class="fw-bold text-decoration-none" style="color: var(--text-muted);"><i class="fa-solid fa-envelope me-1 text-primary"></i> Contact Us</a>
+                <a href="admin/login.php" class="fw-bold" id="admin-login-link"><i class="fa-solid fa-user-lock me-1"></i> Admin Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       MAIN NAVIGATION SYSTEM (STICKY HEADER WITH COMPLETE LGS MEGA MENU)
+       ========================================================================== -->
+    <nav class="navbar navbar-expand-lg sticky-top main-nav" id="mainNav">
+        <div class="container">
+            <a class="logo-container" href="index.html#home" id="brand-logo-main">
+                <img src="resources/logo.jpeg" alt="Local Global Services Logo" class="brand-logo-img">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- JavaScript will dynamically render mega menus from db in this container -->
+            <div class="collapse navbar-collapse" id="navbarContent"></div>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+       BANNER HERO HEADER
+       ========================================================================== -->
+    <header class="blog-header-banner">
+        <div class="container">
+            <div class="back-btn-wrapper d-none" id="backButtonContainer">
+                <a href="blog.html" class="btn-back-to-blogs">
+                    <i class="fa-solid fa-arrow-left"></i> Back to News & Resources
+                </a>
+            </div>
+            <h1 class="display-4 fw-extrabold font-weight-bold" id="bannerTitle">News & Resources</h1>
+            <p class="lead text-white-50 mb-0" id="bannerSub">Enterprise insights, SAP strategy, and Industrial IoT innovations.</p>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+       MAIN DYNAMIC CONTAINER
+       ========================================================================== -->
+    <main class="container my-5">
+        
+        <!-- SECTION A: BLOG ARTICLES GRID LISTING -->
+        <section id="section-listing">
+            <!-- Search & Filters -->
+            <div class="card search-card p-3 mb-5 border-0 bg-light">
+                <div class="row align-items-center g-3">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-solid fa-magnifying-glass"></i></span>
+                            <input type="text" class="form-control border-start-0 ps-0" id="searchBlogsInput" placeholder="Search articles or topics...">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-8 text-md-end text-muted small">
+                        Showing <span class="fw-bold text-navy" id="blogsCountText">0</span> published articles
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cards Grid -->
+            <div class="row g-4" id="blogsGrid">
+                <!-- Skeleton Loader -->
+                <div class="col-12 text-center py-5" id="loaderSpinner">
+                    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3 text-muted">Fetching latest news and articles...</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECTION B: ARTICLE FULL-READER CONTAINER -->
+        <section id="section-reader" class="d-none">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <article class="article-container">
+                        <div class="mb-4 text-center">
+                            <img src="" id="articleCoverImage" class="img-fluid rounded shadow-sm w-100 d-none" style="max-height: 450px; object-fit: cover;" alt="">
+                        </div>
+                        
+                        <h1 class="article-title" id="articleTitle">Article Title</h1>
+                        
+                        <div class="article-meta">
+                            <div class="article-meta-item">
+                                <i class="fa-solid fa-circle-user text-danger"></i> <span id="articleAuthor">LGS Editorial Team</span>
+                            </div>
+                            <div class="article-meta-item">
+                                <i class="fa-solid fa-calendar-days text-danger"></i> <span id="articleDate">June 06, 2026</span>
+                            </div>
+                            <div class="article-meta-item">
+                                <i class="fa-solid fa-globe text-danger"></i> <span>Enterprise Insights</span>
+                            </div>
+                        </div>
+                        
+                        <div class="article-content" id="articleBody">
+                            <!-- Raw Article Content -->
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+       FOOTER & DUAL MAPS SYSTEM
+       ========================================================================== -->
+    <footer class="py-5 text-white bg-dark">
+        <div class="container py-4">
+            <div class="row g-4 mb-4">
+                <!-- Company Info -->
+                <div class="col-lg-6">
+                    <div class="footer-brand brand-font mb-3">
+                        Local<span>Global</span>
+                    </div>
+                    <p class="text-white-50 mb-4" style="font-size: 0.9rem; line-height: 1.6;">
+                        Local Global Services (LGS) is a leading global SAP Gold Partner and digital systems integrator. We accelerate enterprise modernization across applications, data, cloud, IoT, and AI.
+                    </p>
+                    <div class="social-links d-flex gap-2">
+                        <a href="https://www.linkedin.com/company/localglobal-services-pvt-ltd/?viewAsMember=true" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/local_global_services_sap?igsh=MTh6ODQyMGh3NTYwaQ%3D%3D&utm_source=qr" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="mt-4">
+                        <h6 class="text-white-50 small text-uppercase mb-2" style="letter-spacing: 1.05px; font-weight: 700; font-size: 0.72rem;">Certifications & Accreditations</h6>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="resources/uploads/ISO 9001.png" alt="ISO 9001" style="height: 60px; width: auto; background: rgba(255, 255, 255, 0.08); padding: 6px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <img src="resources/uploads/ISO 27001.png" alt="ISO 27001" style="height: 60px; width: auto; background: rgba(255, 255, 255, 0.08); padding: 6px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <img src="resources/uploads/CMMI L3.png" alt="CMMI Level 3" style="height: 60px; width: auto; background: rgba(255, 255, 255, 0.08); padding: 6px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="col-lg-6">
+                    <h5 class="footer-title mb-3">Contact Info</h5>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled text-white-50 d-flex flex-column gap-2 small mb-0">
+                                <li>
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i><strong>Office (India):</strong><br>
+                                    Building No.18, Panchsheel Park, Commercial complex, New Delhi, India
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i><strong>Office (Bahrain):</strong><br>
+                                    Seef District, Manama, Bahrain
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled text-white-50 d-flex flex-column gap-2 small">
+                                <li>
+                                    <span class="js-contact-phone"><i class="fa-solid fa-phone text-danger me-2"></i> +91-9718117270</span>
+                                </li>
+                                <li>
+                                    <span class="js-contact-email"><i class="fa-regular fa-envelope text-danger me-2"></i> sales@localglobal.com</span>
+                                </li>
+                            </ul>
+                            <div class="mt-3">
+                                <a href="admin/login.php" class="btn btn-outline-light btn-sm px-3 py-2" style="border-radius: 8px;">
+                                    <i class="fa-solid fa-user-lock me-1"></i> Admin Portal
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary opacity-25">
+            
+            <!-- Sitemap Section -->
+            <div class="row g-4 mt-2">
+                <!-- Column 1 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">SAP ERP & Cloud</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sap-digital-transform" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Integrated SAP & Digital Transformation Services</a></li>
+                        <li><a href="service.html?id=sap-s4hana" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP S/4HANA</a></li>
+                        <li><a href="service.html?id=rise-sap" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">RISE with SAP</a></li>
+                        <li><a href="service.html?id=grow-sap" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">GROW with SAP</a></li>
+                        <li><a href="service.html?id=continuous-ams" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Continuous Application Management</a></li>
+                        <li><a href="service.html?id=sap-migration" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Migration & Upgrade</a></li>
+                    </ul>
+                    
+                    <div class="footer-category-title mt-3 mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Industry-Driven SAP Solutions</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=ind-automotive" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Automotive</a></li>
+                        <li><a href="service.html?id=ind-lifesciences" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Life Sciences & Pharma Tech</a></li>
+                        <li><a href="service.html?id=ind-epc" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Engineer. Procure. Construct. Digitally.</a></li>
+                        <li><a href="service.html?id=ind-energy" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Energy & Utility Services</a></li>
+                        <li><a href="service.html?id=ind-manufacturing" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP for Manufacturing Excellence</a></li>
+                        <li><a href="service.html?id=ind-realestate" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Real Estate</a></li>
+                        <li><a href="service.html?id=ind-retail" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Retail Transformation Services</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Innovation & Analytics</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sap-innovation" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Digital Innovation</a></li>
+                        <li><a href="service.html?id=sap-cloud" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Cloud Transformation</a></li>
+                        <li><a href="service.html?id=sap-btp" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Business Technology Platform</a></li>
+                        <li><a href="service.html?id=sap-cloud-services" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Cloud Services</a></li>
+                        <li><a href="service.html?id=s4-hana-cloud" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP S/4HANA Cloud</a></li>
+                        <li><a href="service.html?id=sap-successfactors" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP SuccessFactors</a></li>
+                        <li><a href="service.html?id=sap-ariba" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Ariba</a></li>
+                    </ul>
+
+                    <div class="footer-category-title mt-3 mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Business Analytics</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sap-analytics" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Analytics</a></li>
+                        <li><a href="service.html?id=power-bi" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Power BI</a></li>
+                        <li><a href="service.html?id=fiori-enablement" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Fiori Enablement</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Specialized Modules & IoT</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li class="fw-bold text-white-50 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.85) !important;">Specialized SAP Module Services</li>
+                        <li><a href="service.html?id=sap-hcm" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">SAP HCM Implementation</a></li>
+                        <li><a href="service.html?id=sap-refx" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">ReFx Implementation</a></li>
+                        <li><a href="service.html?id=sap-dms" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">SAP Document Management System</a></li>
+                        <li><a href="service.html?id=sap-ehs" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">SAP Environment, Health & Safety Management</a></li>
+                        <li><a href="service.html?id=sap-opentext" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">OpenText</a></li>
+                        
+                        <li class="fw-bold text-white-50 mt-3" style="font-size: 0.78rem; color: rgba(255,255,255,0.85) !important;">Internet Of Things (IOT)</li>
+                        <li><a href="service.html?id=iot-production" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Production Track</a></li>
+                        <li><a href="service.html?id=iot-vehicle" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Vehicle Live Tracking System</a></li>
+                        <li><a href="service.html?id=iot-fuel" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Fuel Consuption Monitoring System</a></li>
+                        <li><a href="service.html?id=iot-bus" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Bus Tracking System</a></li>
+                        <li><a href="service.html?id=iot-temp" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Temperature Monitoring</a></li>
+                        <li><a href="service.html?id=iot-equipment" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Heavy Equipment Tracking</a></li>
+                        <li><a href="service.html?id=iot-rfid" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">RFID Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Custom Apps & AI</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=resource-augmentation" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Resource Augmentation</a></li>
+                        <li><a href="service.html?id=app-dev-core" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development</a></li>
+                        <li><a href="service.html?id=app-vendor-portal" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development: Vendor Portal</a></li>
+                        <li><a href="service.html?id=app-weighbridge" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development: Weighbridge Integration</a></li>
+                        <li><a href="service.html?id=sol-digisign" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development: Digital Signature Integration</a></li>
+                        <li><a href="service.html?id=app-xlease" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">X-Lease Management Solution</a></li>
+                        <li><a href="service.html?id=app-tender" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Tender Process</a></li>
+                        <li><a href="service.html?id=app-hims" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Hospital Management</a></li>
+                        <li><a href="service.html?id=ai-core" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Artificial Intelligence</a></li>
+                        <li><a href="service.html?id=ai-cheque" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Auto Cheque Management</a></li>
+                        <li><a href="service.html?id=ai-invoice-automation" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Vendor/AP Invoice Automation</a></li>
+                        <li><a href="service.html?id=ai-cloud" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Cloud</a></li>
+                        <li><a href="service.html?id=ai-lowcode" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Low Code Development</a></li>
+                        <li><a href="service.html?id=ai-consulting" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Consulting</a></li>
+                        <li><a href="service.html?id=cyber-security" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Cyber Security</a></li>
+                    </ul>
+                    
+                    <div class="footer-category-title mt-3 mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">SAP Solutions</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sol-einvoice" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP e-Invoice Solution</a></li>
+                        <li><a href="service.html?id=sol-ewaybill" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP e-Waybill Solution</a></li>
+                        <li><a href="service.html?id=sol-gst" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">GST Reconciliation</a></li>
+                        <li><a href="service.html?id=sol-gateentry" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Gate Entry Exit Solution</a></li>
+                        <li><a href="service.html?id=sol-barcode" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Barcode Integration</a></li>
+                        <li><a href="service.html?id=sol-whatsapp" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP WhatsApp Integration</a></li>
+                        <li><a href="service.html?id=sol-payment" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Payment Gateway Integration</a></li>
+                        <li><a href="service.html?id=sol-p2p" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">P2P Procurement Automation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary opacity-25">
+            
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <span class="text-white-50 small">&copy; 2026 Local Global Services. All rights reserved.</span>
+                <div class="d-flex gap-3 small">
+                    <a href="legal.html?id=privacy-policy" class="text-white-50 text-decoration-none">Privacy Policy</a>
+                    <span class="text-white-50">|</span>
+                    <a href="legal.html?id=terms-conditions" class="text-white-50 text-decoration-none">Terms & Conditions</a>
+                </div>
+                <span class="text-white-50 small">SAP&reg;, S/4HANA&reg;, SuccessFactors&reg; are trademarks of SAP SE.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom scripts -->
+    <script src="js/languages.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- ElevenLabs Widget -->
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+    <!-- Blog controller script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const blogSlug = urlParams.get('id'); // e.g. ?id=slug-name
+            
+            const sectionListing = document.getElementById('section-listing');
+            const sectionReader = document.getElementById('section-reader');
+            const loaderSpinner = document.getElementById('loaderSpinner');
+            const backButtonContainer = document.getElementById('backButtonContainer');
+            const bannerTitle = document.getElementById('bannerTitle');
+            const bannerSub = document.getElementById('bannerSub');
+            
+            let allBlogsData = [];
+            
+            if (blogSlug) {
+                // Reader View: load a specific blog
+                sectionListing.classList.add('d-none');
+                sectionReader.classList.remove('d-none');
+                backButtonContainer.classList.remove('d-none');
+                
+                fetchBlogArticle(blogSlug);
+            } else {
+                // Listing View: load all blogs
+                sectionListing.classList.remove('d-none');
+                sectionReader.classList.add('d-none');
+                backButtonContainer.classList.add('d-none');
+                
+                fetchAllBlogs();
+            }
+            
+            // Search Input listener
+            const searchBlogsInput = document.getElementById('searchBlogsInput');
+            if (searchBlogsInput) {
+                searchBlogsInput.addEventListener('input', (e) => {
+                    const term = e.target.value.toLowerCase().trim();
+                    filterBlogsList(term);
+                });
+            }
+            
+            async function fetchAllBlogs() {
+                try {
+                    const response = await fetch('api/get_blogs.php');
+                    const result = await response.json();
+                    
+                    loaderSpinner.classList.add('d-none');
+                    
+                    if (result.success && result.data && result.data.length > 0) {
+                        allBlogsData = result.data;
+                        document.getElementById('blogsCountText').textContent = allBlogsData.length;
+                        renderBlogsGrid(allBlogsData);
+                    } else {
+                        document.getElementById('blogsGrid').innerHTML = `
+                            <div class="col-12 text-center py-5 text-muted">
+                                <i class="fa-regular fa-folder-open display-4 mb-3 d-block text-secondary opacity-50"></i>
+                                No articles found at this time.
+                            </div>
+                        `;
+                    }
+                } catch (err) {
+                    loaderSpinner.classList.add('d-none');
+                    console.error("Error loading blog posts:", err);
+                    document.getElementById('blogsGrid').innerHTML = `
+                        <div class="col-12 text-center py-5 text-danger">
+                            <i class="fa-solid fa-triangle-exclamation display-4 mb-3 d-block"></i>
+                            An error occurred while fetching articles. Please refresh the page.
+                        </div>
+                    `;
+                }
+            }
+            
+            async function fetchBlogArticle(slug) {
+                try {
+                    const response = await fetch('api/get_blogs.php?slug=' + encodeURIComponent(slug));
+                    const result = await response.json();
+                    
+                    if (result.success && result.data) {
+                        const blog = result.data;
+                        
+                        // Dynamic SEO title & description updates
+                        document.title = blog.seo_title || (blog.title + " | LGS News");
+                        
+                        let metaDesc = document.querySelector('meta[name="description"]');
+                        if (metaDesc) {
+                            metaDesc.setAttribute('content', blog.meta_description || blog.summary);
+                        } else {
+                            metaDesc = document.createElement('meta');
+                            metaDesc.name = "description";
+                            metaDesc.content = blog.meta_description || blog.summary;
+                            document.head.appendChild(metaDesc);
+                        }
+                        
+                        // Update Banner headings
+                        bannerTitle.textContent = "LGS Article";
+                        bannerTitle.className = "display-4 fw-extrabold font-weight-bold text-white";
+                        bannerSub.textContent = "Published in LGS News & Resources";
+                        
+                        // Fill Article content
+                        document.getElementById('articleTitle').textContent = blog.title;
+                        
+                        // Render Author
+                        const authorSpan = document.getElementById('articleAuthor');
+                        if (authorSpan) {
+                            authorSpan.textContent = (blog.author && blog.author.trim() !== '') ? blog.author : 'LGS Editorial Team';
+                        }
+                        
+                        // Format date
+                        const pubDate = new Date(blog.created_at);
+                        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                        document.getElementById('articleDate').textContent = pubDate.toLocaleDateString('en-US', options);
+                        
+                        // Article cover image
+                        const img = document.getElementById('articleCoverImage');
+                        if (blog.image_url) {
+                            img.src = blog.image_url;
+                            img.classList.remove('d-none');
+                        } else {
+                            img.classList.add('d-none');
+                        }
+                        
+                        document.getElementById('articleBody').innerHTML = blog.content;
+                    } else {
+                        renderArticleNotFound();
+                    }
+                } catch (err) {
+                    console.error("Error loading article details:", err);
+                    renderArticleNotFound();
+                }
+            }
+            
+            function renderArticleNotFound() {
+                bannerTitle.textContent = "Article Not Found";
+                bannerSub.textContent = "The requested page might have been removed or renamed.";
+                document.getElementById('section-reader').innerHTML = `
+                    <div class="row justify-content-center py-5">
+                        <div class="col-md-6 text-center py-5">
+                            <i class="fa-solid fa-file-circle-xmark display-1 text-danger mb-4 opacity-75"></i>
+                            <h3 class="fw-bold text-navy mb-3">Article Missing</h3>
+                            <p class="text-muted mb-4">We apologize, but we could not find the article you are looking for. It may have been archived or deleted.</p>
+                            <a href="blog.html" class="btn btn-navy px-4 py-2" style="border-radius: 8px;">Back to News & Resources</a>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            function renderBlogsGrid(list) {
+                const grid = document.getElementById('blogsGrid');
+                grid.innerHTML = '';
+                
+                list.forEach(blog => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-6 col-lg-4';
+                    
+                    const pubDate = new Date(blog.created_at);
+                    const formattedDate = pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                    
+                    const coverSrc = blog.image_url ? blog.image_url : 'https://res.cloudinary.com/dbxfs9npx/image/upload/v1717672200/default_blog.jpg';
+                    
+                    col.innerHTML = `
+                        <div class="blog-card">
+                            <div style="overflow: hidden; position: relative;">
+                                <img src="${coverSrc}" class="blog-card-img" alt="${blog.title}">
+                            </div>
+                            <div class="blog-card-body">
+                                <div class="blog-date"><i class="fa-regular fa-calendar-days me-1"></i> ${formattedDate}</div>
+                                <h5 class="blog-card-title">${blog.title}</h5>
+                                <p class="blog-card-summary">${blog.summary}</p>
+                                <a href="blog.html?id=${blog.slug}" class="blog-read-more">
+                                    <span>Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(col);
+                });
+            }
+            
+            function filterBlogsList(term) {
+                if (!term) {
+                    renderBlogsGrid(allBlogsData);
+                    return;
+                }
+                const filtered = allBlogsData.filter(blog => {
+                    return blog.title.toLowerCase().includes(term) || 
+                           blog.summary.toLowerCase().includes(term) || 
+                           (blog.seo_title && blog.seo_title.toLowerCase().includes(term));
+                });
+                renderBlogsGrid(filtered);
+            }
+        });
+    </script>
+</body>
+</html>

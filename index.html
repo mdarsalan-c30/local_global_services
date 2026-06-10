@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Local Global Services (LGS) | Enterprise SAP Gold Partner & System Integrator</title>
+    <meta name="description" content="Local Global Services (LGS) is a leading global SAP Gold Partner specializing in S/4HANA migrations, RISE with SAP, HXM, industrial IoT fleet tracking, and cognitive AI automation.">
+    <meta name="keywords" content="SAP Gold Partner, LGS, Local Global Services, S/4HANA, RISE with SAP, SuccessFactors, IoT Fleet Tracking, AP Invoice AI, System Integrator">
+    <meta name="author" content="Local Global Services">
+    <link rel="canonical" href="https://www.localglobalservices.com/">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Local Global Services (LGS) | SAP Gold Partner & Digital Core Integrations">
+    <meta property="og:description" content="Fuel your enterprise growth with top-notch technologies like S/4HANA, secure cloud networks, cellular IoT tracking telemetry, and AP invoice cognitive automation.">
+    <meta property="og:url" content="https://www.localglobalservices.com/">
+    <meta property="og:site_name" content="Local Global Services">
+    
+    <!-- Bootstrap 5 CSS (Loaded Natively/Offline) -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome 6 icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom stylesheet with Cache Buster -->
+    <link rel="stylesheet" href="css/style.css?v=1.4">
+</head>
+<body>
+
+    <!-- ==========================================================================
+       TOP BAR (LGS BRAND ACCENTS)
+       ========================================================================== -->
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Left Side Language Switcher Selector -->
+            <div class="lang-selector-wrapper">
+                <button class="lang-dropdown-btn" id="currentLangBtn" aria-expanded="false">
+                    English (EN)
+                </button>
+                <ul class="lang-dropdown-menu" id="langMenu">
+                    <li><a href="#" data-lang="en">English (EN)</a></li>
+                    <li><a href="#" data-lang="ar">العربية (AR)</a></li>
+                    <li><a href="#" data-lang="de">Deutsch (DE)</a></li>
+                    <li><a href="#" data-lang="es">Español (ES)</a></li>
+                    <li><a href="#" data-lang="fr">Français (FR)</a></li>
+                </ul>
+            </div>
+            
+            <!-- Right Side Contact & Admin Links -->
+            <div class="d-none d-md-flex align-items-center gap-4">
+                <span class="js-contact-phone"><i class="fa-solid fa-phone me-1 text-primary"></i> +91-9718117270</span>
+                <span class="js-contact-email"><i class="fa-regular fa-envelope me-1 text-primary"></i> sales@localglobal.com</span>
+                <a href="blog.html" class="fw-bold text-decoration-none" data-lang-key="nav_news" style="color: var(--text-muted);"><i class="fa-solid fa-square-rss me-1 text-primary"></i> News & Resources</a>
+                <a href="index.html#contact" class="fw-bold text-decoration-none" data-lang-key="nav_contact" style="color: var(--text-muted);"><i class="fa-solid fa-envelope me-1 text-primary"></i> Contact Us</a>
+                <a href="admin/login.php" class="fw-bold" data-lang-key="btn_admin" id="admin-login-link"><i class="fa-solid fa-user-lock me-1"></i> Admin Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       MAIN NAVIGATION SYSTEM (STICKY HEADER WITH COMPLETE LGS MEGA MENU)
+       ========================================================================== -->
+    <nav class="navbar navbar-expand-lg sticky-top main-nav" id="mainNav">
+        <div class="container">
+            <a class="logo-container" href="#home" id="brand-logo-main">
+                <img src="resources/logo.jpeg" alt="Local Global Services Logo" class="brand-logo-img">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home" data-lang-key="nav_home">Home</a>
+                    </li>
+                    
+                    <!-- 1. ABOUT DROPDOWN -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang-key="nav_about">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#about">Company Overview</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 2. PRODUCT & SERVICES MEGA MENU (Excel columns) -->
+                    <li class="nav-item dropdown mega-menu-parent">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang-key="nav_services">
+                            Product & Services
+                        </a>
+                        <div class="dropdown-mega-menu">
+                            <div class="container-fluid">
+                                <div class="row g-4">
+                                    <!-- Column 1: SAP Core ERP & Cloud -->
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-title"><i class="fa-solid fa-cube"></i> SAP Core ERP & Cloud</div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=sap-digital-transform" class="subheading-link">Integrated SAP & Digital Transformation</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=sap-digital-transform">Integrated SAP & Digital Transformation</a></li>
+                                                <li><a href="service.html?id=sap-s4hana">SAP S/4HANA & Digital Core</a></li>
+                                                <li><a href="service.html?id=rise-sap">RISE with SAP</a></li>
+                                                <li><a href="service.html?id=grow-sap">GROW with SAP</a></li>
+                                                <li><a href="service.html?id=continuous-ams">Continuous Application Management (AMS)</a></li>
+                                                <li><a href="service.html?id=sap-migration">Migration & Upgrade Services</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=sap-innovation" class="subheading-link">Digital Innovation</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=sap-innovation">Digital Innovation</a></li>
+                                                <li><a href="service.html?id=sap-btp">Business Technology Platform (BTP)</a></li>
+                                                <li><a href="service.html?id=sap-cloud">Cloud Transformation</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=sap-cloud-services" class="subheading-link">SAP Cloud Services</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=sap-cloud-services">SAP Cloud Services</a></li>
+                                                <li><a href="service.html?id=s4-hana-cloud">S4 HANA Cloud</a></li>
+                                                <li><a href="service.html?id=sap-successfactors">SAP SuccessFactors (HXM)</a></li>
+                                                <li><a href="service.html?id=sap-ariba">SAP Ariba Procurement</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Column 2: Analytics & Specialized Modules -->
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-title"><i class="fa-solid fa-layer-group"></i> Analytics & BI</div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=sap-analytics" class="subheading-link">Business Analytics</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=sap-analytics">Business Analytics</a></li>
+                                                <li><a href="service.html?id=sap-analytics-cloud">SAP Analytics Cloud</a></li>
+                                                <li><a href="service.html?id=power-bi">Power BI Analytics</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=fiori-enablement" class="subheading-link">FIORI Enablement</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=fiori-enablement">Fiori Enablement & UX</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=sap-specialized-modules" class="subheading-link">Specialized SAP Module Services</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=sap-specialized-modules">Specialized SAP Module Services</a></li>
+                                                <li><a href="service.html?id=sap-hcm">SAP HCM Implementation</a></li>
+                                                <li><a href="service.html?id=sap-refx">ReFx Real Estate Management</a></li>
+                                                <li><a href="service.html?id=sap-dms">DMS Document Solutions</a></li>
+                                                <li><a href="service.html?id=sap-ehs">Environment Health & Safety (EHS)</a></li>
+                                                <li><a href="service.html?id=sap-opentext">OpenText Integration</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Column 3: Internet of Things (IoT) -->
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-title"><i class="fa-solid fa-wifi"></i> Internet of Things (IoT)</div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=iot-core" class="subheading-link">IoT Production & Logistics</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=iot-core">Internet of Things (IoT) Core</a></li>
+                                                <li><a href="service.html?id=iot-production">IoT Production Uptime Track</a></li>
+                                                <li><a href="service.html?id=iot-vehicle">Vehicle Live Tracking System</a></li>
+                                                <li><a href="service.html?id=iot-fuel">Fuel Consumption Monitors</a></li>
+                                                <li><a href="service.html?id=iot-bus">Bus Tracking System</a></li>
+                                                <li><a href="service.html?id=iot-temp">Temperature Monitoring</a></li>
+                                                <li><a href="service.html?id=iot-equipment">Heavy Equipment Telematics</a></li>
+                                                <li><a href="service.html?id=iot-rfid">RFID Warehouse Solutions</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Column 4: Custom Applications & AI -->
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-title"><i class="fa-solid fa-microchip"></i> App Dev & AI</div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=resource-augmentation" class="subheading-link">Resource Augmentation</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=resource-augmentation">Resource Augmentation</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=cyber-security" class="subheading-link">Enterprise Cyber Security</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=cyber-security">Cyber Security Solutions</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-menu-group">
+                                            <div class="mega-menu-subheading"><a href="service.html?id=ai-core" class="subheading-link">Cognitive AI Automation</a> <i class="fa-solid fa-chevron-down ms-2 small transition-icon toggle-trigger"></i></div>
+                                            <ul class="mega-menu-list">
+                                                <li><a href="service.html?id=app-dev-core">Application Development Core</a></li>
+                                                <li><a href="service.html?id=app-vendor-portal">Enterprise Vendor Portal</a></li>
+                                                <li><a href="service.html?id=app-weighbridge">Weighbridge ERP Integration</a></li>
+                                                <li><a href="service.html?id=sol-digisign">Digital Signature Integration</a></li>
+                                                <li><a href="service.html?id=app-xlease">X-Lease Management Solution</a></li>
+                                                <li><a href="service.html?id=app-tender">Tender Process Portal</a></li>
+                                                <li><a href="service.html?id=app-hims">Hospital Management - HIMS</a></li>
+                                                <li><a href="service.html?id=ai-core">Artificial Intelligence Core</a></li>
+                                                <li><a href="service.html?id=ai-cheque">Auto Cheque Management</a></li>
+                                                <li><a href="service.html?id=ai-invoice-automation">AP Invoice AI Automation</a></li>
+                                                <li><a href="service.html?id=ai-cloud">AI Cloud Solutions</a></li>
+                                                <li><a href="service.html?id=ai-lowcode">Low Code App Dev</a></li>
+                                                <li><a href="service.html?id=ai-consulting">AI Consulting Services</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- 3. INDUSTRY SOLUTIONS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang-key="nav_industries">
+                            Industries
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#industries">Automotive Industry</a></li>
+                            <li><a class="dropdown-item" href="#industries">Life Sciences & Pharma Tech</a></li>
+                            <li><a class="dropdown-item" href="#industries">EPC & Construction</a></li>
+                            <li><a class="dropdown-item" href="#industries">Energy & Utility Services</a></li>
+                            <li><a class="dropdown-item" href="#industries">SAP Manufacturing Excellence</a></li>
+                            <li><a class="dropdown-item" href="#industries">Real Estate & Retail</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 4. SAP SOLUTIONS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang-key="nav_sap">
+                            SAP Solutions
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="service.html?id=gst-reconciliation">SAP e-Invoice Solution</a></li>
+                            <li><a class="dropdown-item" href="service.html?id=gst-reconciliation">SAP e-Waybill Solution</a></li>
+                            <li><a class="dropdown-item" href="service.html?id=gst-reconciliation">GST Reconciliation</a></li>
+                            <li><a class="dropdown-item" href="service.html?id=app-vendor-portal">SAP Gate Entry Exit Solution</a></li>
+                            <li><a class="dropdown-item" href="service.html?id=app-vendor-portal">Digital Signature Integration</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <a href="#contact" class="btn btn-accent-brand" data-lang-key="btn_get_started" id="cta-get-in-touch">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+       HERO SECTION (LGS BRAND SLOGANS INTEGRATION)
+       ========================================================================== -->
+    <section class="hero-section text-center" id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Centered Hero Content -->
+                <div class="col-lg-9 col-md-10">
+                    <span class="hero-tag" data-lang-key="hero_tagline">Local Global Services (LGS)</span>
+                    <h1 class="hero-title" id="main-hero-heading">
+                        <span data-lang-key="hero_title_1">Driving Forward the Legacy</span> <br>
+                        <span class="typed-text" data-lang-key="hero_title_2">of Digital Transformation</span>
+                    </h1>
+                    <p class="lead mb-4 text-dark mx-auto" data-lang-key="hero_desc" id="main-hero-desc" style="max-width: 800px; color: var(--accent-red) !important; font-weight: 500 !important;">
+                        Transforming vision into reality. We empower global enterprises with business-aligned technology strategies, high-performing SAP integrations, and cognitive AI architectures.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center">
+                        <a href="#pillars" class="btn btn-primary-brand py-3 px-4" data-lang-key="hero_cta_primary">Our Services</a>
+                        <a href="#contact" class="btn btn-secondary-brand py-3 px-4" data-lang-key="hero_cta_secondary">Request Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       STATISTICS SECTION (COUNT-UP INTERACTION)
+       ========================================================================== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <div class="col-6 col-lg-2">
+                    <div class="stat-box text-center">
+                        <div class="stat-number" data-target="20+">0</div>
+                        <div class="stat-label fw-semibold text-muted" style="font-size: 0.85rem;">Years of industry experience</div>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-lg-2">
+                    <div class="stat-box text-center">
+                        <div class="stat-number" data-target="65+">0</div>
+                        <div class="stat-label fw-semibold text-muted" style="font-size: 0.85rem;">Successful IT projects delivered</div>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-lg-2">
+                    <div class="stat-box text-center">
+                        <div class="stat-number" data-target="24X7">24X7</div>
+                        <div class="stat-label fw-semibold text-muted" style="font-size: 0.85rem;">Support for our customers</div>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-lg-2">
+                    <div class="stat-box text-center">
+                        <div class="stat-number" data-target="99%">0%</div>
+                        <div class="stat-label fw-semibold text-muted" style="font-size: 0.85rem;">Uptime guaranteed</div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <div class="stat-box text-center">
+                        <div class="stat-number" data-target="120+">0</div>
+                        <div class="stat-label fw-semibold text-muted" style="font-size: 0.85rem;">Skilled dedicated team</div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <div class="stat-box text-center">
+                        <div class="stat-number" data-target="95%">0%</div>
+                        <div class="stat-label fw-semibold text-muted" style="font-size: 0.85rem;">Client retention</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       TRUSTED BY COMPANIES (PREMIUM LOGO SCROLL)
+       ========================================================================== -->
+    <section class="py-4 bg-white border-bottom">
+        <div class="container">
+            <p class="text-center text-uppercase fw-bold text-muted mb-4" style="font-size: 0.8rem; letter-spacing: 1.5px;">Trusted by Industry Leaders</p>
+            <div class="logo-scroll-container">
+                <div class="logo-scroll-track">
+                    <!-- Original set -->
+                    <div class="logo-item"><img src="resources/tech-hive.png" alt="Tech Hive"></div>
+                    <div class="logo-item"><img src="resources/kyndryl.png" alt="Kyndryl"></div>
+                    <div class="logo-item"><img src="resources/softforce.png" alt="Softforce"></div>
+                    <div class="logo-item"><img src="resources/netacess.png" alt="Netacess"></div>
+                    <!-- Cloned set for seamless infinite scrolling -->
+                    <div class="logo-item"><img src="resources/tech-hive.png" alt="Tech Hive"></div>
+                    <div class="logo-item"><img src="resources/kyndryl.png" alt="Kyndryl"></div>
+                    <div class="logo-item"><img src="resources/softforce.png" alt="Softforce"></div>
+                    <div class="logo-item"><img src="resources/netacess.png" alt="Netacess"></div>
+                    <!-- Another clone for longer/wider screens -->
+                    <div class="logo-item"><img src="resources/tech-hive.png" alt="Tech Hive"></div>
+                    <div class="logo-item"><img src="resources/kyndryl.png" alt="Kyndryl"></div>
+                    <div class="logo-item"><img src="resources/softforce.png" alt="Softforce"></div>
+                    <div class="logo-item"><img src="resources/netacess.png" alt="Netacess"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       LGS CORE PILLARS SECTION (THE ACCENTED CARD GLOW EFFECTS)
+       ========================================================================== -->
+    <section class="py-3 my-2" id="pillars">
+        <div class="container">
+            <div class="section-header text-center max-width-600 mx-auto">
+                <span class="section-tagline" data-lang-key="pillar_title">Core Technology Pillars</span>
+                <h2 class="section-title mb-3" data-lang-key="pillar_subtitle">Delivering end-to-end digital integration through three high-performing operational channels.</h2>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Pillar 1: SAP ERP (Blue glow card) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="premium-card" id="pillar-card-1">
+                        <div class="card-icon-wrapper">
+                            <i class="fa-solid fa-cube"></i>
+                        </div>
+                        <h4 class="premium-card-title" data-lang-key="pillar_1_title">Integrated SAP ERP Core</h4>
+                        <p class="premium-card-text" data-lang-key="pillar_1_desc">
+                            As an SAP Gold Partner, we scale enterprises with S/4HANA migrations, RISE cloud strategies, and complete functional AMS support.
+                        </p>
+                        <a href="service.html?id=sap-s4hana" class="premium-card-link">
+                            <span data-lang-key="btn_view_more">Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Pillar 2: IoT (Red glow card) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="premium-card card-red-accent" id="pillar-card-2">
+                        <div class="card-icon-wrapper">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <h4 class="premium-card-title" data-lang-key="pillar_2_title">Internet of Things (IoT)</h4>
+                        <p class="premium-card-text" data-lang-key="pillar_2_desc">
+                            Ensure real-time asset optimization, cellular fleet tracking telematics, and automated warehouse RFID systems.
+                        </p>
+                        <a href="service.html?id=iot-vehicle" class="premium-card-link">
+                            <span data-lang-key="btn_view_more">Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Pillar 3: AI & Web (Blue glow card) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="premium-card" id="pillar-card-3">
+                        <div class="card-icon-wrapper">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h4 class="premium-card-title" data-lang-key="pillar_3_title">Artificial Intelligence</h4>
+                        <p class="premium-card-text" data-lang-key="pillar_3_desc">
+                            Eliminate manual entry siloes via cognitive AP invoice extraction, custom vendor portals, and predictive data reporting.
+                        </p>
+                        <a href="service.html?id=ai-invoice-automation" class="premium-card-link">
+                            <span data-lang-key="btn_view_more">Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       INDUSTRIES WE EMPOWER
+       ========================================================================== -->
+    <section class="py-3 bg-light" id="industries">
+        <div class="container py-1">
+            <div class="section-header text-center max-width-600 mx-auto">
+                <span class="section-tagline" data-lang-key="ind_title">Industries We Empower</span>
+                <h2 class="section-title mb-3" data-lang-key="ind_subtitle">Providing tailored, business-aligned software frameworks across global economic sectors.</h2>
+            </div>
+            
+            <div class="text-center mb-5">
+                <div class="nav nav-pills nav-pills-custom" id="industryPills" role="tablist">
+                    <!-- Dynamically loaded -->
+                </div>
+            </div>
+            
+            <div class="tab-content" id="industryPillsContent">
+                <!-- Dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       ABOUT US SECTION (WHO WE ARE)
+       ========================================================================== -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="section-tagline" id="about-section-title" data-lang-key="about_title">Who We Are</span>
+                    <h2 class="section-title mb-4" id="about-section-subtitle" data-lang-key="about_subtitle">Your Trusted Technology Integrator & Digital Transformation Catalyst.</h2>
+                    <p class="mb-3 lead text-muted" id="about-section-desc-1" data-lang-key="about_desc_1">
+                        Local Global Services (LGS) bridges the gap between traditional operations and modern digital technology stacks. Backed by twenty years of global consulting experience, we help enterprises design, build, and support their core operational systems.
+                    </p>
+                    <p class="mb-4 text-muted" id="about-section-desc-2" data-lang-key="about_desc_2">
+                        We focus on building customer-centric digital solutions using high-performing tools like SAP ERP, cellular IoT tracking, and cognitive AI tools. Our dedicated team of 500+ certified specialists is focused on driving tangible business outcomes, lower TCO, and unmatched agility.
+                    </p>
+                    
+                    <ul class="about-features-list">
+                        <li><i class="fa-solid fa-circle-check text-danger"></i> <span data-lang-key="about_feat_1">Global Delivery Excellence</span></li>
+                        <li><i class="fa-solid fa-circle-check text-danger"></i> <span data-lang-key="about_feat_2">Tailored Industry Blueprints</span></li>
+                        <li><i class="fa-solid fa-circle-check text-danger"></i> <span data-lang-key="about_feat_3">Continuous Support & Training</span></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img id="about-section-img" src="resources/wo-we-are.png" alt="Who We Are" class="img-fluid rounded shadow-lg" style="max-height: 380px; object-fit: cover; border-radius: var(--radius-md);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       TESTIMONIALS SECTION (PREMIUM HORIZONTAL SCROLL)
+       ========================================================================== -->
+    <section class="py-5 bg-light border-top border-bottom" id="testimonials">
+        <div class="container py-3">
+            <div class="section-header text-center max-width-600 mx-auto">
+                <span class="section-tagline" data-lang-key="testimonials_title">Client Testimonials</span>
+                <h2 class="section-title mb-3" data-lang-key="testimonials_subtitle">What our global enterprise partners say about LGS technical integrations.</h2>
+            </div>
+            
+            <!-- Horizontal scroll container -->
+            <div class="testimonial-scroll-container mt-5">
+                <div class="testimonial-track" id="testimonial-track-container">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       CONTACT US & INTERACTIVE FORM
+       ========================================================================== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="row g-4 align-items-stretch">
+                <!-- Left Form Column -->
+                <div class="col-lg-6">
+                    <span class="section-tagline" data-lang-key="contact_title">Let's Connect</span>
+                    <h2 class="section-title mb-4" data-lang-key="contact_subtitle">Ready to modernize your operations? Talk to our technology consultants today.</h2>
+                    
+                    <!-- Submission notices -->
+                    <div id="formNotice" class="alert alert-success d-none" role="alert"></div>
+                    
+                    <!-- Dynamic AJAX form -->
+                    <form id="contactForm" method="POST" action="api/contact.php">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="form_name_field" class="form-label-brand" data-lang-key="form_name">Your Name</label>
+                                <input type="text" class="form-control form-control-brand" id="form_name_field" name="name" required placeholder="Your Name" data-lang-key="form_name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="form_email_field" class="form-label-brand" data-lang-key="form_email">Your Email</label>
+                                <input type="email" class="form-control form-control-brand" id="form_email_field" name="email" required placeholder="Your Email" data-lang-key="form_email">
+                            </div>
+                            <div class="col-12">
+                                <label for="form_phone_field" class="form-label-brand">Phone Number</label>
+                                <input type="tel" class="form-control form-control-brand" id="form_phone_field" name="phone" required placeholder="Phone Number">
+                            </div>
+                            <div class="col-12">
+                                <label for="form_service_field" class="form-label-brand" data-lang-key="form_service">Select Service</label>
+                                <select class="form-select form-control-brand" id="form_service_field" name="service" required>
+                                    <option value="" disabled selected data-lang-key="form_service">Select Service</option>
+                                    <option value="SAP Version Upgrade">SAP Version Upgrade</option>
+                                    <option value="SAP S/4HANA Migration">SAP S/4HANA Migration</option>
+                                    <option value="SAP S/4HANA Implementation">SAP S/4HANA Implementation</option>
+                                    <option value="SAP Re-Implementation">SAP Re-Implementation</option>
+                                    <option value="SAP Automation with AI">SAP Automation with AI</option>
+                                    <option value="SAP BTP">SAP BTP</option>
+                                    <option value="SAP Fiori">SAP Fiori</option>
+                                    <option value="SAP Basis">SAP Basis</option>
+                                    <option value="SAP System Audit">SAP System Audit</option>
+                                    <option value="SAP AMS">SAP AMS</option>
+                                    <option value="Roll out Services">Roll out Services</option>
+                                    <option value="Resource Augmentation">Resource Augmentation</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="form_message_field" class="form-label-brand" data-lang-key="form_message">Your Message</label>
+                                <textarea class="form-control form-control-brand" id="form_message_field" name="message" rows="5" required placeholder="Your Message" data-lang-key="form_message"></textarea>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-accent-brand py-3 px-5" data-lang-key="btn_submit">Submit Request</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Right Map Visual (Double Map Layout Side-by-Side) -->
+                <div class="col-lg-6">
+                    <div class="row g-3 h-100">
+                        <!-- India Office Map -->
+                        <div class="col-6">
+                            <div class="map-visual-placeholder p-2" style="background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); height: 100%; display: flex; flex-direction: column; justify-content: space-between; min-height: unset;">
+                                <div>
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14018.665792476566!2d77.21545645!3d28.5497258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce26d83f81ad9%3A0xfff5cf04b7e02de8!2sPanchsheel%20Park%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1716719183424!5m2!1sen!2sin" 
+                                        width="100%" 
+                                        height="125" 
+                                        style="border:0; border-radius: var(--radius-sm);" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>
+                                <div class="p-2 mt-1">
+                                    <h6 class="fw-bold mb-1 text-primary" style="font-size: 0.8rem;"><i class="fa-solid fa-location-dot text-danger me-1"></i>Office (India)</h6>
+                                    <p class="text-muted mb-0" style="font-size: 0.68rem; line-height: 1.3;">Building No.18, Panchsheel Park, Delhi, India</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bahrain Office Map -->
+                        <div class="col-6">
+                            <div class="map-visual-placeholder p-2" style="background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); height: 100%; display: flex; flex-direction: column; justify-content: space-between; min-height: unset;">
+                                <div>
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14317.065842857416!2d50.5369655!3d26.2368499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49af3d37a28ebf%3A0xe54fb7a2e2d93e82!2sSeef%2C%20Manama%2C%20Bahrain!5e0!3m2!1sen!2sin!4v1716719183424!5m2!1sen!2sin" 
+                                        width="100%" 
+                                        height="125" 
+                                        style="border:0; border-radius: var(--radius-sm);" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>
+                                <div class="p-2 mt-1">
+                                    <h6 class="fw-bold mb-1 text-primary" style="font-size: 0.8rem;"><i class="fa-solid fa-location-dot text-danger me-1"></i>Office (Bahrain)</h6>
+                                    <p class="text-muted mb-0" style="font-size: 0.68rem; line-height: 1.3;">Seef District, Manama, Bahrain</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       FOOTER SECTION (PROFESSIONAL Navy/Red)
+       ========================================================================== -->
+    <footer class="py-5 text-white bg-dark">
+        <div class="container py-4">
+            <div class="row g-4 mb-4">
+                <!-- Company Info -->
+                <div class="col-lg-6">
+                    <div class="footer-brand brand-font mb-3">
+                        Local<span>Global</span>
+                    </div>
+                    <p class="text-white-50 mb-4" style="font-size: 0.9rem; line-height: 1.6;">
+                        Local Global Services (LGS) is a leading global SAP Gold Partner and digital systems integrator. We accelerate enterprise modernization across applications, data, cloud, IoT, and AI.
+                    </p>
+                    <div class="social-links d-flex gap-2">
+                        <a href="https://www.linkedin.com/company/localglobal-services-pvt-ltd/?viewAsMember=true" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/local_global_services_sap?igsh=MTh6ODQyMGh3NTYwaQ%3D%3D&utm_source=qr" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="mt-4">
+                        <h6 class="text-white-50 small text-uppercase mb-2" style="letter-spacing: 1.05px; font-weight: 700; font-size: 0.72rem;">Certifications & Accreditations</h6>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="resources/uploads/ISO 9001.png" alt="ISO 9001" style="height: 60px; width: auto; background: rgba(255, 255, 255, 0.08); padding: 6px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <img src="resources/uploads/ISO 27001.png" alt="ISO 27001" style="height: 60px; width: auto; background: rgba(255, 255, 255, 0.08); padding: 6px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <img src="resources/uploads/CMMI L3.png" alt="CMMI Level 3" style="height: 60px; width: auto; background: rgba(255, 255, 255, 0.08); padding: 6px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="col-lg-6">
+                    <h5 class="footer-title mb-3">Contact Info</h5>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled text-white-50 d-flex flex-column gap-2 small mb-0">
+                                <li>
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i><strong>Office (India):</strong><br>
+                                    Building No.18, Panchsheel Park, Commercial complex, New Delhi, India
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i><strong>Office (Bahrain):</strong><br>
+                                    Seef District, Manama, Bahrain
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled text-white-50 d-flex flex-column gap-2 small">
+                                <li>
+                                    <span class="js-contact-phone"><i class="fa-solid fa-phone text-danger me-2"></i> +91-9718117270</span>
+                                </li>
+                                <li>
+                                    <span class="js-contact-email"><i class="fa-regular fa-envelope text-danger me-2"></i> sales@localglobal.com</span>
+                                </li>
+                            </ul>
+                            <div class="mt-3">
+                                <a href="admin/login.php" class="btn btn-outline-light btn-sm px-3 py-2" style="border-radius: 8px;">
+                                    <i class="fa-solid fa-user-lock me-1"></i> Admin Portal
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary opacity-25">
+            
+            <!-- Sitemap Section -->
+            <div class="row g-4 mt-2">
+                <!-- Column 1 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">SAP ERP & Cloud</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sap-digital-transform" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Integrated SAP & Digital Transformation Services</a></li>
+                        <li><a href="service.html?id=sap-s4hana" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP S/4HANA</a></li>
+                        <li><a href="service.html?id=rise-sap" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">RISE with SAP</a></li>
+                        <li><a href="service.html?id=grow-sap" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">GROW with SAP</a></li>
+                        <li><a href="service.html?id=continuous-ams" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Continuous Application Management</a></li>
+                        <li><a href="service.html?id=sap-migration" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Migration & Upgrade</a></li>
+                    </ul>
+                    
+                    <div class="footer-category-title mt-3 mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Industry-Driven SAP Solutions</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=ind-automotive" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Automotive</a></li>
+                        <li><a href="service.html?id=ind-lifesciences" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Life Sciences & Pharma Tech</a></li>
+                        <li><a href="service.html?id=ind-epc" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Engineer. Procure. Construct. Digitally.</a></li>
+                        <li><a href="service.html?id=ind-energy" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Energy & Utility Services</a></li>
+                        <li><a href="service.html?id=ind-manufacturing" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP for Manufacturing Excellence</a></li>
+                        <li><a href="service.html?id=ind-realestate" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Real Estate</a></li>
+                        <li><a href="service.html?id=ind-retail" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Retail Transformation Services</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Innovation & Analytics</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sap-innovation" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Digital Innovation</a></li>
+                        <li><a href="service.html?id=sap-cloud" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Cloud Transformation</a></li>
+                        <li><a href="service.html?id=sap-btp" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Business Technology Platform</a></li>
+                        <li><a href="service.html?id=sap-cloud-services" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Cloud Services</a></li>
+                        <li><a href="service.html?id=s4-hana-cloud" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP S/4HANA Cloud</a></li>
+                        <li><a href="service.html?id=sap-successfactors" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP SuccessFactors</a></li>
+                        <li><a href="service.html?id=sap-ariba" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Ariba</a></li>
+                    </ul>
+
+                    <div class="footer-category-title mt-3 mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Business Analytics</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sap-analytics" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Analytics</a></li>
+                        <li><a href="service.html?id=power-bi" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Power BI</a></li>
+                        <li><a href="service.html?id=fiori-enablement" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Fiori Enablement</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Specialized Modules & IoT</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li class="fw-bold text-white-50 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.85) !important;">Specialized SAP Module Services</li>
+                        <li><a href="service.html?id=sap-hcm" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">SAP HCM Implementation</a></li>
+                        <li><a href="service.html?id=sap-refx" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">ReFx Implementation</a></li>
+                        <li><a href="service.html?id=sap-dms" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">SAP Document Management System</a></li>
+                        <li><a href="service.html?id=sap-ehs" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">SAP Environment, Health & Safety Management</a></li>
+                        <li><a href="service.html?id=sap-opentext" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">OpenText</a></li>
+                        
+                        <li class="fw-bold text-white-50 mt-3" style="font-size: 0.78rem; color: rgba(255,255,255,0.85) !important;">Internet Of Things (IOT)</li>
+                        <li><a href="service.html?id=iot-production" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Production Track</a></li>
+                        <li><a href="service.html?id=iot-vehicle" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Vehicle Live Tracking System</a></li>
+                        <li><a href="service.html?id=iot-fuel" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Fuel Consuption Monitoring System</a></li>
+                        <li><a href="service.html?id=iot-bus" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Bus Tracking System</a></li>
+                        <li><a href="service.html?id=iot-temp" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Temperature Monitoring</a></li>
+                        <li><a href="service.html?id=iot-equipment" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">Heavy Equipment Tracking</a></li>
+                        <li><a href="service.html?id=iot-rfid" class="text-white-50 text-decoration-none" style="font-size: 0.75rem; padding-left: 8px; display: inline-block;">RFID Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div class="col-md-3">
+                    <div class="footer-category-title mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">Custom Apps & AI</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=resource-augmentation" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Resource Augmentation</a></li>
+                        <li><a href="service.html?id=app-dev-core" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development</a></li>
+                        <li><a href="service.html?id=app-vendor-portal" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development: Vendor Portal</a></li>
+                        <li><a href="service.html?id=app-weighbridge" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development: Weighbridge Integration</a></li>
+                        <li><a href="service.html?id=sol-digisign" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Application Development: Digital Signature Integration</a></li>
+                        <li><a href="service.html?id=app-xlease" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">X-Lease Management Solution</a></li>
+                        <li><a href="service.html?id=app-tender" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Tender Process</a></li>
+                        <li><a href="service.html?id=app-hims" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Hospital Management</a></li>
+                        <li><a href="service.html?id=ai-core" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Artificial Intelligence</a></li>
+                        <li><a href="service.html?id=ai-cheque" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Auto Cheque Management</a></li>
+                        <li><a href="service.html?id=ai-invoice-automation" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Vendor/AP Invoice Automation</a></li>
+                        <li><a href="service.html?id=ai-cloud" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Cloud</a></li>
+                        <li><a href="service.html?id=ai-lowcode" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Low Code Development</a></li>
+                        <li><a href="service.html?id=ai-consulting" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Consulting</a></li>
+                        <li><a href="service.html?id=cyber-security" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Cyber Security</a></li>
+                    </ul>
+                    
+                    <div class="footer-category-title mt-3 mb-2 text-white fw-bold border-bottom pb-1" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; border-color: rgba(255,255,255,0.1) !important;">SAP Solutions</div>
+                    <ul class="list-unstyled footer-sitemap-list d-flex flex-column gap-1">
+                        <li><a href="service.html?id=sol-einvoice" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP e-Invoice Solution</a></li>
+                        <li><a href="service.html?id=sol-ewaybill" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP e-Waybill Solution</a></li>
+                        <li><a href="service.html?id=sol-gst" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">GST Reconciliation</a></li>
+                        <li><a href="service.html?id=sol-gateentry" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Gate Entry Exit Solution</a></li>
+                        <li><a href="service.html?id=sol-barcode" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP Barcode Integration</a></li>
+                        <li><a href="service.html?id=sol-whatsapp" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">SAP WhatsApp Integration</a></li>
+                        <li><a href="service.html?id=sol-payment" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">Payment Gateway Integration</a></li>
+                        <li><a href="service.html?id=sol-p2p" class="text-white-50 text-decoration-none" style="font-size: 0.75rem;">P2P Procurement Automation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary opacity-25">
+            
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <span class="text-white-50 small">&copy; 2026 Local Global Services. All rights reserved.</span>
+                <div class="d-flex gap-3 small">
+                    <a href="legal.html?id=privacy-policy" class="text-white-50 text-decoration-none">Privacy Policy</a>
+                    <span class="text-white-50">|</span>
+                    <a href="legal.html?id=terms-conditions" class="text-white-50 text-decoration-none">Terms & Conditions</a>
+                </div>
+                <span class="text-white-50 small">SAP&reg;, S/4HANA&reg;, SuccessFactors&reg; are trademarks of SAP SE.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom scripts -->
+    <script src="js/languages.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- ElevenLabs Conversational AI Voice Agent Widget Embed -->
+    <elevenlabs-convai agent-id="agent_8701ksjdjkgrf8b81gnkdvnv04mj"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+    <!-- ==========================================================================
+       DYNAMIC CENTER POP-UP ANNOUNCEMENT
+       ========================================================================== -->
+    <div id="popupOverlay" class="popup-overlay">
+        <div class="popup-container" id="popupContainer">
+            <button class="popup-close-btn" id="popupCloseBtn">&times;</button>
+            <div class="popup-content" id="popupContent">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

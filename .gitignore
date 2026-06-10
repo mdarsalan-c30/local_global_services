@@ -1,0 +1,19 @@
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# SQLite temporary files
+api/*.db-journal
+api/*.db-shm
+api/*.db-wal
