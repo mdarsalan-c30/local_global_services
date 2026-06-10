@@ -328,6 +328,42 @@ try {
             }
         }
         
+        // Settings Action: Change Admin Password
+        elseif ($action === 'change_password') {
+            $current_password = $_POST['current_password'] ?? '';
+            $new_password = $_POST['new_password'] ?? '';
+            $confirm_password = $_POST['confirm_password'] ?? '';
+            
+            if (!empty($current_password) && !empty($new_password) && !empty($confirm_password)) {
+                if ($new_password === $confirm_password) {
+                    $username = $_SESSION['admin_username'] ?? 'admin';
+                    
+                    // Fetch current hashed password
+                    $stmt = $db->prepare("SELECT password FROM admins WHERE username = :username");
+                    $stmt->execute([':username' => $username]);
+                    $hashed = $stmt->fetchColumn();
+                    
+                    if ($hashed && password_verify($current_password, $hashed)) {
+                        // Update to new password
+                        $new_hashed = password_hash($new_password, PASSWORD_BCRYPT);
+                        $updateStmt = $db->prepare("UPDATE admins SET password = :password WHERE username = :username");
+                        $updateStmt->execute([':password' => $new_hashed, ':username' => $username]);
+                        $message = "Admin password updated successfully.";
+                        $messageType = "success";
+                    } else {
+                        $message = "Current password is incorrect.";
+                        $messageType = "danger";
+                    }
+                } else {
+                    $message = "New password and confirmation do not match.";
+                    $messageType = "danger";
+                }
+            } else {
+                $message = "All password fields are required.";
+                $messageType = "danger";
+            }
+        }
+        
         // Blog Action: Add Blog Post
         elseif ($action === 'add_blog') {
             $title = trim(filter_var($_POST['title'], FILTER_DEFAULT));
@@ -2158,6 +2194,43 @@ try {
                         </button>
                     </div>
                 </form>
+
+                <!-- Change Admin Password Form Section -->
+                <div class="mt-5 pt-4 border-top">
+                    <h3 class="fw-bold mb-1">Account & Security Settings</h3>
+                    <p class="text-muted mb-4">Update your dashboard administrator login credentials here.</p>
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="glass-card p-4">
+                                <h5 class="fw-bold text-navy mb-4"><i class="fa-solid fa-lock text-danger me-2"></i> Change Password</h5>
+                                
+                                <form action="dashboard.php" method="POST">
+                                    <input type="hidden" name="action" value="change_password">
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label font-weight-bold small text-muted text-uppercase">Current Password</label>
+                                        <input type="password" class="form-control" name="current_password" required placeholder="Enter current password">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label font-weight-bold small text-muted text-uppercase">New Password</label>
+                                        <input type="password" class="form-control" name="new_password" required placeholder="Enter new password">
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label class="form-label font-weight-bold small text-muted text-uppercase">Confirm New Password</label>
+                                        <input type="password" class="form-control" name="confirm_password" required placeholder="Confirm new password">
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-custom px-4 py-2" style="border-radius: 8px; font-weight: 600;">
+                                        <i class="fa-solid fa-key me-2"></i> Update Password
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
         </main>
