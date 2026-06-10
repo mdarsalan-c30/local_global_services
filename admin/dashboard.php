@@ -328,38 +328,70 @@ try {
             }
         }
         
-        // Settings Action: Change Admin Password
-        elseif ($action === 'change_password') {
+        // Settings Action: Change Admin Credentials (Username and Password)
+        elseif ($action === 'change_credentials') {
+            $new_username = trim(filter_var($_POST['new_username'] ?? '', FILTER_DEFAULT));
             $current_password = $_POST['current_password'] ?? '';
             $new_password = $_POST['new_password'] ?? '';
             $confirm_password = $_POST['confirm_password'] ?? '';
             
-            if (!empty($current_password) && !empty($new_password) && !empty($confirm_password)) {
-                if ($new_password === $confirm_password) {
-                    $username = $_SESSION['admin_username'] ?? 'admin';
+            if (!empty($new_username) && !empty($current_password)) {
+                $current_username = $_SESSION['admin_username'] ?? 'admin';
+                
+                // Fetch current hashed password
+                $stmt = $db->prepare("SELECT password FROM admins WHERE username = :username");
+                $stmt->execute([':username' => $current_username]);
+                $hashed = $stmt->fetchColumn();
+                
+                if ($hashed && password_verify($current_password, $hashed)) {
+                    $username_taken = false;
+                    // Check if new username is already taken by a different account
+                    if (strtolower($new_username) !== strtolower($current_username)) {
+                        $checkStmt = $db->prepare("SELECT COUNT(*) FROM admins WHERE LOWER(username) = LOWER(:username)");
+                        $checkStmt->execute([':username' => $new_username]);
+                        if ($checkStmt->fetchColumn() > 0) {
+                            $username_taken = true;
+                        }
+                    }
                     
-                    // Fetch current hashed password
-                    $stmt = $db->prepare("SELECT password FROM admins WHERE username = :username");
-                    $stmt->execute([':username' => $username]);
-                    $hashed = $stmt->fetchColumn();
-                    
-                    if ($hashed && password_verify($current_password, $hashed)) {
-                        // Update to new password
-                        $new_hashed = password_hash($new_password, PASSWORD_BCRYPT);
-                        $updateStmt = $db->prepare("UPDATE admins SET password = :password WHERE username = :username");
-                        $updateStmt->execute([':password' => $new_hashed, ':username' => $username]);
-                        $message = "Admin password updated successfully.";
-                        $messageType = "success";
-                    } else {
-                        $message = "Current password is incorrect.";
+                    if ($username_taken) {
+                        $message = "The username '{$new_username}' is already taken.";
                         $messageType = "danger";
+                    } else {
+                        if (!empty($new_password)) {
+                            if ($new_password === $confirm_password) {
+                                $new_hashed = password_hash($new_password, PASSWORD_BCRYPT);
+                                $updateStmt = $db->prepare("UPDATE admins SET username = :new_username, password = :password WHERE username = :current_username");
+                                $updateStmt->execute([
+                                    ':new_username' => $new_username,
+                                    ':password' => $new_hashed,
+                                    ':current_username' => $current_username
+                                ]);
+                                $message = "Admin credentials (username and password) updated successfully.";
+                                $messageType = "success";
+                                $_SESSION['admin_username'] = $new_username;
+                            } else {
+                                $message = "New password and confirmation do not match.";
+                                $messageType = "danger";
+                            }
+                        } else {
+                            // Only update username
+                            $updateStmt = $db->prepare("UPDATE admins SET username = :new_username WHERE username = :current_username");
+                            $updateStmt->execute([
+                                ':new_username' => $new_username,
+                                ':current_username' => $current_username
+                            ]);
+                            $message = "Admin username updated successfully.";
+                            $messageType = "success";
+                            $_SESSION['admin_username'] = $new_username;
+                        }
                     }
                 } else {
-                    $message = "New password and confirmation do not match.";
+                    $message = "Current password is incorrect.";
                     $messageType = "danger";
                 }
             } else {
-                $message = "All password fields are required.";
+                $message = "New username and current password are required.";
                 $messageType = "danger";
             }
         }
@@ -2195,7 +2227,7 @@ try {
                     </div>
                 </form>
 
-                <!-- Change Admin Password Form Section -->
+                <!-- Change Admin Credentials Form Section -->
                 <div class="mt-5 pt-4 border-top">
                     <h3 class="fw-bold mb-1">Account & Security Settings</h3>
                     <p class="text-muted mb-4">Update your dashboard administrator login credentials here.</p>
@@ -2203,28 +2235,36 @@ try {
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="glass-card p-4">
-                                <h5 class="fw-bold text-navy mb-4"><i class="fa-solid fa-lock text-danger me-2"></i> Change Password</h5>
+                                <h5 class="fw-bold text-navy mb-4"><i class="fa-solid fa-lock text-danger me-2"></i> Update Admin Credentials</h5>
                                 
                                 <form action="dashboard.php" method="POST">
-                                    <input type="hidden" name="action" value="change_password">
+                                    <input type="hidden" name="action" value="change_credentials">
                                     
+                                    <div class="mb-3">
+                                        <label class="form-label font-weight-bold small text-muted text-uppercase">Admin Username</label>
+                                        <input type="text" class="form-control" name="new_username" required value="<?php echo htmlspecialchars($_SESSION['admin_username'] ?? 'admin'); ?>" placeholder="Enter new username">
+                                    </div>
+
                                     <div class="mb-3">
                                         <label class="form-label font-weight-bold small text-muted text-uppercase">Current Password</label>
-                                        <input type="password" class="form-control" name="current_password" required placeholder="Enter current password">
+                                        <input type="password" class="form-control" name="current_password" required placeholder="Enter current password to verify identity">
                                     </div>
                                     
+                                    <hr class="my-4">
+                                    <p class="small text-muted mb-3">Leave the fields below blank if you only want to change your username.</p>
+                                    
                                     <div class="mb-3">
-                                        <label class="form-label font-weight-bold small text-muted text-uppercase">New Password</label>
-                                        <input type="password" class="form-control" name="new_password" required placeholder="Enter new password">
+                                        <label class="form-label font-weight-bold small text-muted text-uppercase">New Password (Optional)</label>
+                                        <input type="password" class="form-control" name="new_password" placeholder="Enter new password">
                                     </div>
                                     
                                     <div class="mb-4">
                                         <label class="form-label font-weight-bold small text-muted text-uppercase">Confirm New Password</label>
-                                        <input type="password" class="form-control" name="confirm_password" required placeholder="Confirm new password">
+                                        <input type="password" class="form-control" name="confirm_password" placeholder="Confirm new password">
                                     </div>
                                     
                                     <button type="submit" class="btn btn-primary btn-custom px-4 py-2" style="border-radius: 8px; font-weight: 600;">
-                                        <i class="fa-solid fa-key me-2"></i> Update Password
+                                        <i class="fa-solid fa-key me-2"></i> Update Credentials
                                     </button>
                                 </form>
                             </div>
