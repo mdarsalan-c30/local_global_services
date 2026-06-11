@@ -108,7 +108,7 @@ try {
     }
 
     // 6. Seed Settings Table keys
-    $db->exec("INSERT OR IGNORE INTO settings (key, value) VALUES 
+    $db->exec("INSERT OR IGNORE INTO settings (`key`, value) VALUES 
         ('contact_phone', '+91-9718117270'),
         ('contact_email', 'sales@localglobal.com'),
         ('popup_status', 'hide'),

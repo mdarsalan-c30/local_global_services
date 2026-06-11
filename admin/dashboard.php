@@ -261,7 +261,7 @@ try {
             $contact_email = trim(filter_var($_POST['contact_email'] ?? '', FILTER_DEFAULT));
             
             if (!empty($contact_phone) && !empty($contact_email)) {
-                $stmt = $db->prepare("UPDATE settings SET value = :value WHERE key = :key");
+                $stmt = $db->prepare("UPDATE settings SET value = :value WHERE `key` = :key");
                 
                 $stmt->execute([':value' => $contact_phone, ':key' => 'contact_phone']);
                 $stmt->execute([':value' => $contact_email, ':key' => 'contact_email']);
@@ -766,7 +766,7 @@ try {
     $blogsCount = $db->query("SELECT COUNT(*) FROM blogs")->fetchColumn();
     
     // Fetch settings key-value pair
-    $settings = $db->query("SELECT key, value FROM settings")->fetchAll(PDO::FETCH_KEY_PAIR);
+    $settings = $db->query("SELECT `key`, `value` FROM settings")->fetchAll(PDO::FETCH_KEY_PAIR);
     if (!isset($settings['contact_phone'])) $settings['contact_phone'] = '+91-9718117270';
     if (!isset($settings['contact_email'])) $settings['contact_email'] = 'sales@localglobal.com';
     

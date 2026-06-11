@@ -51,7 +51,7 @@ try {
         // Fetch contact email from settings table dynamically, fallback to sales@globals.com
         $to = 'sales@globals.com';
         try {
-            $settingsQuery = $db->query("SELECT value FROM settings WHERE key = 'contact_email' LIMIT 1");
+            $settingsQuery = $db->query("SELECT value FROM settings WHERE `key` = 'contact_email' LIMIT 1");
             $dbEmail = $settingsQuery->fetchColumn();
             if ($dbEmail && filter_var($dbEmail, FILTER_VALIDATE_EMAIL)) {
                 $to = $dbEmail;
