@@ -17,3 +17,6 @@ Desktop.ini
 api/*.db-journal
 api/*.db-shm
 api/*.db-wal
+
+# Database Configuration file (Local/Production credentials)
+api/db_config.php
