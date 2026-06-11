@@ -177,11 +177,12 @@ try {
             $domain = 'localglobalservices.com';
         }
 
-        // Sender details
-        $headers .= 'From: LGS Web Portal <no-reply@' . $domain . '>' . "\r\n";
+        // Sender details (using existing 'sales@' inbox to ensure high SPF/DKIM deliverability)
+        $senderEmail = 'sales@' . $domain;
+        $headers .= 'From: LGS Web Portal <' . $senderEmail . '>' . "\r\n";
         
         // Suppress warnings and use envelope sender (-f flag) to guarantee delivery on shared hosts
-        $envelope = "-fno-reply@" . $domain;
+        $envelope = "-f" . $senderEmail;
         @mail($to, $subject, $msg, $headers, $envelope);
 
         echo json_encode([
