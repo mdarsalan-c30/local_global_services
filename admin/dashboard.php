@@ -5,7 +5,7 @@
  */
 
 session_start();
-$dbPath = dirname(__DIR__) . '/api/database.db';
+require_once dirname(__DIR__) . '/api/db_connect.php';
 require_once dirname(__DIR__) . '/api/upload_helper.php';
 
 // Verify session
@@ -18,8 +18,7 @@ $message = '';
 $messageType = 'success';
 
 try {
-    $db = new PDO("sqlite:" . $dbPath);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = getDatabaseConnection();
     
     // -------------------------------------------------------------
     // CONTROLLER: Handle CRUD Actions

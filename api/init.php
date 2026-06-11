@@ -4,99 +4,104 @@
  * Sets up SQLite database and pre-populates all menus and dynamic services content.
  */
 
-$dbPath = __DIR__ . '/database.db';
+require_once __DIR__ . '/db_connect.php';
 
 try {
-    $db = new PDO("sqlite:" . $dbPath);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = getDatabaseConnection();
+    
+    // SQL Dialect Helper
+    $isMySQL = (DB_MODE === 'mysql');
+    $pkType = $isMySQL ? "id INT AUTO_INCREMENT PRIMARY KEY" : "id INTEGER PRIMARY KEY AUTOINCREMENT";
+    $datetimeType = $isMySQL ? "TIMESTAMP DEFAULT CURRENT_TIMESTAMP" : "DATETIME DEFAULT CURRENT_TIMESTAMP";
+    $insertIgnore = $isMySQL ? "INSERT IGNORE" : "INSERT OR IGNORE";
     
     // Create Submissions Table (Leads)
     $db->exec("CREATE TABLE IF NOT EXISTS submissions (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        phone TEXT DEFAULT NULL,
-        service TEXT NOT NULL,
+        $pkType,
+        name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        phone VARCHAR(50) DEFAULT NULL,
+        service VARCHAR(255) NOT NULL,
         message TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        status TEXT DEFAULT 'Pending'
+        created_at $datetimeType,
+        status VARCHAR(50) DEFAULT 'Pending'
     )");
     
     // Create Admins Table
     $db->exec("CREATE TABLE IF NOT EXISTS admins (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT UNIQUE NOT NULL,
-        password TEXT NOT NULL
+        $pkType,
+        username VARCHAR(100) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL
     )");
     
     // Create Menus Table (Navbar Parent Categories)
     $db->exec("CREATE TABLE IF NOT EXISTS menus (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
+        $pkType,
+        name VARCHAR(255) NOT NULL,
         sort_order INTEGER DEFAULT 0
     )");
     
     // Create Submenus Table (Sub-items and Dynamic Services Page content)
     $db->exec("CREATE TABLE IF NOT EXISTS submenus (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        $pkType,
         menu_id INTEGER NOT NULL,
-        name TEXT NOT NULL,
-        service_key TEXT UNIQUE NOT NULL,
-        tagline TEXT NOT NULL,
-        icon TEXT NOT NULL,
+        name VARCHAR(255) NOT NULL,
+        service_key VARCHAR(100) UNIQUE NOT NULL,
+        tagline VARCHAR(255) NOT NULL,
+        icon VARCHAR(100) NOT NULL,
         desc1 TEXT NOT NULL,
         desc2 TEXT NOT NULL,
         features TEXT NOT NULL,
-        banner_grad TEXT NOT NULL,
+        banner_grad VARCHAR(255) NOT NULL,
         sort_order INTEGER DEFAULT 0,
-        image_url TEXT DEFAULT NULL,
+        image_url VARCHAR(255) DEFAULT NULL,
         FOREIGN KEY (menu_id) REFERENCES menus(id) ON DELETE CASCADE
     )");
     
     // Create Settings Table
     $db->exec("CREATE TABLE IF NOT EXISTS settings (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        key TEXT UNIQUE NOT NULL,
+        $pkType,
+        `key` VARCHAR(100) UNIQUE NOT NULL,
         value TEXT NOT NULL
     )");
     
     // Create Blogs Table
     $db->exec("CREATE TABLE IF NOT EXISTS blogs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT NOT NULL,
-        slug TEXT UNIQUE NOT NULL,
+        $pkType,
+        title VARCHAR(255) NOT NULL,
+        slug VARCHAR(100) UNIQUE NOT NULL,
         summary TEXT NOT NULL,
         content TEXT NOT NULL,
-        seo_title TEXT NOT NULL,
+        seo_title VARCHAR(255) NOT NULL,
         meta_description TEXT NOT NULL,
-        image_url TEXT DEFAULT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        author TEXT DEFAULT NULL
+        image_url VARCHAR(255) DEFAULT NULL,
+        created_at $datetimeType,
+        author VARCHAR(100) DEFAULT NULL
     )");
     
     // Create Testimonials Table
     $db->exec("CREATE TABLE IF NOT EXISTS testimonials (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        client_name TEXT NOT NULL,
-        service_name TEXT NOT NULL,
+        $pkType,
+        client_name VARCHAR(255) NOT NULL,
+        service_name VARCHAR(255) NOT NULL,
         testimonial_text TEXT NOT NULL,
-        image_url TEXT DEFAULT NULL,
+        image_url VARCHAR(255) DEFAULT NULL,
         sort_order INTEGER DEFAULT 0,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        created_at $datetimeType
     )");
     
     // Create Industries Table
     $db->exec("CREATE TABLE IF NOT EXISTS industries (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        title TEXT NOT NULL,
+        $pkType,
+        name VARCHAR(255) NOT NULL,
+        title VARCHAR(255) NOT NULL,
         description TEXT NOT NULL,
-        icon TEXT NOT NULL,
+        icon VARCHAR(100) NOT NULL,
         sort_order INTEGER DEFAULT 0
     )");
     
     // Seed Settings Table
-    $db->exec("INSERT OR IGNORE INTO settings (key, value) VALUES 
+    $db->exec("$insertIgnore INTO settings (`key`, value) VALUES 
         ('contact_phone', '+91-9718117270'),
         ('contact_email', 'sales@localglobal.com'),
         ('popup_status', 'hide'),

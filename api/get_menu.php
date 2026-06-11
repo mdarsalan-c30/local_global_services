@@ -8,17 +8,10 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET');
 
-$dbPath = __DIR__ . '/database.db';
-
-if (!file_exists($dbPath)) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Database not found.']);
-    exit;
-}
+require_once __DIR__ . '/db_connect.php';
 
 try {
-    $db = new PDO("sqlite:" . $dbPath);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = getDatabaseConnection();
     
     // Fetch all parent menus sorted by sort_order
     $menusQuery = $db->query("SELECT * FROM menus ORDER BY sort_order ASC, id ASC");

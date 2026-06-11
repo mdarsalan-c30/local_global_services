@@ -5,7 +5,7 @@
  */
 
 session_start();
-$dbPath = dirname(__DIR__) . '/api/database.db';
+require_once dirname(__DIR__) . '/api/db_connect.php';
 
 // Redirect if already logged in
 if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
@@ -22,12 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($username) || empty($password)) {
         $error = 'Please enter both username and password.';
     } else {
-        if (!file_exists($dbPath)) {
-            $error = 'Database not found. Please run the <a href="../api/init.php">initializer</a> first.';
-        } else {
-            try {
-                $db = new PDO("sqlite:" . $dbPath);
-                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $db = getDatabaseConnection();
                 
                 $query = "SELECT * FROM admins WHERE username = :username LIMIT 1";
                 $stmt = $db->prepare($query);

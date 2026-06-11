@@ -2,11 +2,10 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-$dbPath = __DIR__ . '/database.db';
+require_once __DIR__ . '/db_connect.php';
 
 try {
-    $db = new PDO("sqlite:" . $dbPath);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = getDatabaseConnection();
     
     if (isset($_GET['id'])) {
         // Fetch by ID

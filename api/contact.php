@@ -33,39 +33,10 @@ if (!$name || !$email || !$phone || !$service || !$message) {
     exit;
 }
 
-$dbPath = __DIR__ . '/database.db';
-
-// Verify database exists, if not initialize it silently
-if (!file_exists($dbPath)) {
-    try {
-        // Initialize silently
-        $db = new PDO("sqlite:" . $dbPath);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db->exec("CREATE TABLE IF NOT EXISTS submissions (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            email TEXT NOT NULL,
-            phone TEXT DEFAULT NULL,
-            service TEXT NOT NULL,
-            message TEXT NOT NULL,
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            status TEXT DEFAULT 'Pending'
-        )");
-        $db->exec("CREATE TABLE IF NOT EXISTS admins (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL
-        )");
-    } catch (PDOException $e) {
-        http_response_code(500);
-        echo json_encode(['success' => false, 'message' => 'Database connection failure.']);
-        exit;
-    }
-}
+require_once __DIR__ . '/db_connect.php';
 
 try {
-    $db = new PDO("sqlite:" . $dbPath);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = getDatabaseConnection();
     
     // Insert Submission
     $query = "INSERT INTO submissions (name, email, phone, service, message) VALUES (:name, :email, :phone, :service, :message)";

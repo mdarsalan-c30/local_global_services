@@ -4,11 +4,10 @@
  * Performs necessary schema updates to add phone to submissions, author to blogs, and create testimonials/industries tables.
  */
 
-$dbPath = __DIR__ . '/database.db';
+require_once __DIR__ . '/db_connect.php';
 
 try {
-    $db = new PDO("sqlite:" . $dbPath);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = getDatabaseConnection();
     
     // 1. Check submenus image_url column
     $stmt = $db->query("PRAGMA table_info(submenus)");
