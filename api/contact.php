@@ -77,8 +77,18 @@ try {
     $stmt->bindParam(':message', $message);
     
     if ($stmt->execute()) {
-        // Send HTML email notification to admin (sales@globals.com)
+        // Fetch contact email from settings table dynamically, fallback to sales@globals.com
         $to = 'sales@globals.com';
+        try {
+            $settingsQuery = $db->query("SELECT value FROM settings WHERE key = 'contact_email' LIMIT 1");
+            $dbEmail = $settingsQuery->fetchColumn();
+            if ($dbEmail && filter_var($dbEmail, FILTER_VALIDATE_EMAIL)) {
+                $to = $dbEmail;
+            }
+        } catch (PDOException $se) {
+            // Use fallback
+        }
+
         $subject = 'New Lead Inquiry: ' . $service;
         
         $msg = '
@@ -155,11 +165,24 @@ try {
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
+        // Detect current domain dynamically to ensure matching "From" domain to bypass Hostinger anti-spam rules
+        $host = $_SERVER['HTTP_HOST'] ?? 'localglobalservices.com';
+        $host = preg_replace('/:\d+$/', '', $host); // Remove port if local
+        if (substr($host, 0, 4) === 'www.') {
+            $domain = substr($host, 4);
+        } else {
+            $domain = $host;
+        }
+        if ($domain === '127.0.0.1' || $domain === 'localhost') {
+            $domain = 'localglobalservices.com';
+        }
+
         // Sender details
-        $headers .= 'From: LGS Web Portal <no-reply@localglobalservices.com>' . "\r\n";
+        $headers .= 'From: LGS Web Portal <no-reply@' . $domain . '>' . "\r\n";
         
-        // Suppress warnings in case local mail transfer agent (MTA) is not configured
-        @mail($to, $subject, $msg, $headers);
+        // Suppress warnings and use envelope sender (-f flag) to guarantee delivery on shared hosts
+        $envelope = "-fno-reply@" . $domain;
+        @mail($to, $subject, $msg, $headers, $envelope);
 
         echo json_encode([
             'success' => true,

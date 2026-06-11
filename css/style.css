@@ -1431,3 +1431,61 @@ elevenlabs-convai {
 .hover-white:hover {
     color: #ffffff !important;
 }
+
+/* ==========================================================================
+   Responsive Mobile Navbar Overrides
+   ========================================================================== */
+@media (max-width: 991.98px) {
+    .main-nav {
+        height: auto !important;
+        padding: 10px 0;
+    }
+    
+    .navbar-collapse {
+        background-color: #ffffff !important;
+        box-shadow: var(--shadow-lg);
+        padding: 20px;
+        border-radius: var(--radius-md);
+        margin-top: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+    
+    /* Force non-transparent backgrounds on dropdown lists on mobile */
+    .dropdown-menu, 
+    .dropdown-mega-menu {
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 10px 15px !important;
+        background-color: rgba(11, 53, 109, 0.04) !important;
+        margin-top: 5px;
+        display: none !important; /* Managed by Bootstrap collapse/show class */
+        max-height: none !important;
+        overflow-y: visible !important;
+    }
+    
+    .dropdown-menu.show, 
+    .dropdown-mega-menu.show {
+        display: block !important;
+    }
+    
+    .nav-link {
+        padding: 10px 0 !important;
+    }
+    
+    .mega-menu-title {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-size: 0.95rem;
+    }
+    
+    .mega-menu-list {
+        padding-left: 10px;
+    }
+}
+
