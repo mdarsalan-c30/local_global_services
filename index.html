@@ -513,7 +513,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="form_phone_field" class="form-label-brand">Phone Number</label>
-                                <input type="tel" class="form-control form-control-brand" id="form_phone_field" name="phone" required placeholder="Phone Number">
+                                <input type="tel" class="form-control form-control-brand" id="form_phone_field" name="phone" required placeholder="Phone Number" maxlength="10" pattern="[0-9]{10}" oninput="this.value = this.value.replace(/[^0-9]/g, '');" title="Please enter a 10-digit phone number">
                             </div>
                             <div class="col-12">
                                 <label for="form_service_field" class="form-label-brand" data-lang-key="form_service">Select Service</label>
