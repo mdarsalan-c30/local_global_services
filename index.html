@@ -536,7 +536,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="form_message_field" class="form-label-brand" data-lang-key="form_message">Your Message</label>
-                                <textarea class="form-control form-control-brand" id="form_message_field" name="message" rows="5" required placeholder="Your Message" data-lang-key="form_message"></textarea>
+                                <textarea class="form-control form-control-brand" id="form_message_field" name="message" rows="5" required placeholder="Your Message" data-lang-key="form_message" oninput="this.value = this.value.replace(/[<>]/g, '');"></textarea>
                             </div>
                             <div class="col-12 mt-4">
                                 <button type="submit" class="btn btn-accent-brand py-3 px-5" data-lang-key="btn_submit">Submit Request</button>

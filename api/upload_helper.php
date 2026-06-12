@@ -26,7 +26,9 @@ function upload_service_image($file) {
             $timestamp = time();
             // Generate signature: parameters must be sorted alphabetically
             $params = [
-                'timestamp' => $timestamp
+                'timestamp' => $timestamp,
+                'folder' => 'localglobals/uploads',
+                'upload_preset' => 'localglobals'
             ];
             ksort($params);
             $signParts = [];
@@ -40,7 +42,9 @@ function upload_service_image($file) {
                 'file' => new CURLFile($file['tmp_name'], $file['type'], $file['name']),
                 'api_key' => $apiKey,
                 'timestamp' => $timestamp,
-                'signature' => $signature
+                'signature' => $signature,
+                'folder' => 'localglobals/uploads',
+                'upload_preset' => 'localglobals'
             ];
             
             $ch = curl_init();

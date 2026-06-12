@@ -385,7 +385,7 @@
                                     <input type="tel" class="form-control form-control-sm" name="phone" required placeholder="Your Phone Number" maxlength="10" pattern="[0-9]{10}" oninput="this.value = this.value.replace(/[^0-9]/g, '');" title="Please enter a 10-digit phone number" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm);">
                                 </div>
                                 <div class="mb-3">
-                                    <textarea class="form-control form-control-sm" name="message" rows="3" required placeholder="Your Inquiry Details" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm);"></textarea>
+                                    <textarea class="form-control form-control-sm" name="message" rows="3" required placeholder="Your Inquiry Details" oninput="this.value = this.value.replace(/[<>]/g, '');" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm);"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-accent-brand btn-sm w-100 py-2">Send Message</button>
                             </form>
