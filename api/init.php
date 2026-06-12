@@ -182,11 +182,11 @@ try {
         }
     }
 
-    // Check if admin table is empty, if so, seed default admin: admin / admin123
+    // Check if admin table is empty, if so, seed default admin: admin@localglobals.com / 123@Jafar
     $stmt = $db->query("SELECT COUNT(*) FROM admins");
     if ($stmt->fetchColumn() == 0) {
-        $username = 'admin';
-        $password = password_hash('admin123', PASSWORD_BCRYPT);
+        $username = 'admin@localglobals.com';
+        $password = password_hash('123@Jafar', PASSWORD_BCRYPT);
         $seedAdmin = $db->prepare("INSERT INTO admins (username, password) VALUES (:username, :password)");
         $seedAdmin->bindParam(':username', $username);
         $seedAdmin->bindParam(':password', $password);
@@ -583,7 +583,7 @@ try {
         }
     }
     
-    $seedMessage = "LGS Enterprise SQL Database initialized successfully.<br>Tables generated: <strong>submissions</strong>, <strong>admins</strong>, <strong>menus</strong>, <strong>submenus (services)</strong>.<br>Initial menus & 13 corporate service templates seeded successfully.<br><br>Default Admin Seed:<br>Username: <strong>admin</strong><br>Password: <strong>admin123</strong>";
+    $seedMessage = "LGS Enterprise SQL Database initialized successfully.<br>Tables generated: <strong>submissions</strong>, <strong>admins</strong>, <strong>menus</strong>, <strong>submenus (services)</strong>.<br>Initial menus & 13 corporate service templates seeded successfully.<br><br>Default Admin Seed:<br>Username: <strong>admin@localglobals.com</strong><br>Password: <strong>123@Jafar</strong>";
     
     // Output response for setup verification
     echo "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid #0B356D;'>";
